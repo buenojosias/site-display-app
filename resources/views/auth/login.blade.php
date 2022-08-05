@@ -23,14 +23,15 @@
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
+            {{-- <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
-            </div>
+            </div> --}}
+            <input type="hidden" name="password" value="123456">
 
             <!-- Remember Me -->
             <div class="block mt-4">
