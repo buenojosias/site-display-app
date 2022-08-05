@@ -16,6 +16,8 @@ class Segment extends Model
         return $this->belongsTo(SegmentCategory::class);
     }
 
-    // relacionamento tem empresas...
+    public function companies() {
+        return $this->hasMany(Company::class);
+    }
 
 }
