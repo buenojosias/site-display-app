@@ -40,6 +40,6 @@ class UserSeeder extends Seeder
         //     'remember_token' => Str::random(10),
         // ])->roles()->attach(2);
 
-        \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(50)->create();
     }
 }

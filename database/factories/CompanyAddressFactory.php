@@ -15,20 +15,15 @@ class CompanyAddressFactory extends Factory
      * @return array<string, mixed>
      */
 
-    public function withFaker()
-    {
-        return \Faker\Factory::create('pt_BR');
-    }
-
     public function definition()
     {
         return [
-            'street_name' => $this->faker->streetName(),
-            'number' => $this->faker->buildingNumber(),
+            'street_name' => fake()->streetName(),
+            'number' => fake()->buildingNumber(),
             'zipcode' => rand(80000000,83999999),
-            'district' => $this->faker->cityPrefix(),
-            'city' => $this->faker->city(),
-            'state' => $this->faker->stateAbbr(),
+            'district' => fake()->cityPrefix(),
+            'city' => fake()->city(),
+            'state' => fake()->stateAbbr(),
         ];
     }
 }

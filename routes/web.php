@@ -21,7 +21,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::group(['middleware' => ['auth','admin'], 'prefix' => 'admin'], function(){
+Route::middleware('guest')->group(function () {
+    Route::get('admin/login', App\Http\Livewire\Admin\Login::class)->name('admin.login');
+});
+
+Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function(){
     require __DIR__.'/admin.php';
 });
 

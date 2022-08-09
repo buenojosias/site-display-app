@@ -15,4 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->name('admin.index');
+Route::get('/empresas', function () {
+    return view('dashboard');
+})->name('admin.companies.index');
+Route::get('/motoristas', function () {
+    return view('dashboard');
+})->name('admin.drivers.index');
+Route::get('/campanhas', function () {
+    return view('dashboard');
+})->name('admin.ads.index');

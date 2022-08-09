@@ -15,11 +15,6 @@ class CompanyFactory extends Factory
      * @return array<string, mixed>
      */
 
-    public function withFaker()
-    {
-        return \Faker\Factory::create('pt_BR');
-    }
-
     public function definition()
     {
         $company = $this->faker->company();
@@ -27,7 +22,7 @@ class CompanyFactory extends Factory
             'segment_id' => rand(1,8),
             'region' => 'CWB',
             'fantasy_name' => $company,
-            'corporate_name' => $company .' '. $this->faker->companySuffix(),
+            'corporate_name' => $company .' '. fake()->companySuffix(),
             'cnpj' => rand(10000000000000,99999999999999)
         ];
     }
