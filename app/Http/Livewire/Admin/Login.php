@@ -25,14 +25,14 @@ class Login extends Component
     public function submit() {
         $this->validate();
 
-        if(\Auth::attempt(array('email' => $this->email, 'password' => $this->password))){
+        if(\Auth::attempt(array('email' => $this->email, 'password' => $this->password, 'type' => $this->type))){
             return redirect()->to('/admin');
         }else{
-            $this->notification()->error(
-                //$title = 'Error !!!',
-                $description = 'E-mail ou senha incorreto.'
-            );
-            $this->password = '';
+            session()->flash('error', 'E-mail ou senha incorreto.');
+            // $this->notification()->error(
+            //     $description = 'E-mail ou senha incorreto.'
+            // );
+            // $this->password = '';
         }
     }
 
