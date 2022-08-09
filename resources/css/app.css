@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container {
+    @apply max-w-7xl mx-auto sm:px-6 lg:px-8;
+}
+
+.table-wrapper {
+    @apply bg-white overflow-x-auto shadow-sm rounded;
+}
+.table {
+    @apply min-w-max w-full table-auto;
+}
+.table thead tr {
+    @apply bg-gray-200 text-gray-600 uppercase text-sm leading-normal;
+}
+.table th.center {
+    @apply py-3 px-6 text-center;
+}
+.table th.left {
+    @apply py-3 px-6 text-left;
+}
+.table tbody {
+    @apply text-gray-600 text-sm font-light;
+}
+.table tbody tr {
+    @apply border-b border-gray-200 hover:bg-gray-50;
+}
+.table td {
+    @apply py-3 px-6;
+}

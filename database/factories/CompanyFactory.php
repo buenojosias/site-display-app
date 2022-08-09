@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Company>
@@ -23,7 +24,8 @@ class CompanyFactory extends Factory
             'region' => 'CWB',
             'fantasy_name' => $company,
             'corporate_name' => $company .' '. fake()->companySuffix(),
-            'cnpj' => rand(10000000000000,99999999999999)
+            'cnpj' => rand(10000000000000,99999999999999),
+            'active' => Arr::random([1,1,1,0]),
         ];
     }
 }

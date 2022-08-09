@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('corporate_name');
             $table->string('cnpj', 14);
             $table->string('logo')->nullable();
+            $table->boolean('active')->default(true);
             $table->integer('daily_limit')->nullable();
             $table->integer('day_balance')->nullable();
             $table->timestamps();
