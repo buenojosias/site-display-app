@@ -15,10 +15,19 @@ class DriverSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Driver::factory(6)->create();
+        \App\Models\Driver::
+        factory(6)
+        ->hasAddress()
+        ->hasVehicle()
+        ->create();
+        
         $users = User::where('type','DRIVER')->get();
         foreach($users as $user) {
-            \App\Models\Driver::factory(1)->create(['user_id' => $user->id, 'name' => $user->name]);
+            \App\Models\Driver::
+            factory(1)
+            ->hasAddress()
+            ->hasVehicle()
+            ->create(['user_id' => $user->id, 'name' => $user->name]);
         }
     }
 }

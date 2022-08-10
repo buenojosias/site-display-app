@@ -1,9 +1,5 @@
 <div>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Empresas
-        </h2>
-    </x-slot>
+    <x-slot name="header">Empresas</x-slot>
 
     <div class="list-header">
         <div class="button">
@@ -68,7 +64,7 @@
                             @endif
                         </td>
                         <td>
-                            {{ $company->segment->title }}
+                            {{ $company->segment->title ?? '' }}
                         </td>
                         <td class="text-left">
                             <span @class([

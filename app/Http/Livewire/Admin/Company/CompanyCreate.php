@@ -82,6 +82,7 @@ class CompanyCreate extends Component
                 'description' => 'Empresa salva com sucesso.',
                 'icon'        => 'success'
             ]);
+            // REDIRECIONAR
         } else {
             DB::rollBack();
             $this->dialog([

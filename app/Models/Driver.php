@@ -15,6 +15,14 @@ class Driver extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function address() {
+        return $this->hasOne(DriverAddress::class);
+    }
+
+    public function vehicle() {
+        return $this->hasOne(Vehicle::class);
+    }
+
     // tem tablet
     // tem jornadas
     // tem saldo

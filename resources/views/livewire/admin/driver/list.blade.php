@@ -1,14 +1,10 @@
 <div>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Motoristas
-        </h2>
-    </x-slot>
+    <x-slot name="header">Motoristas</x-slot>
 
     <div class="list-header">
-        {{-- <div class="button">
-            <x-button href="{{ route('admin.companies.create') }}" primary label="Cadastrar" icon="plus" />
-        </div> --}}
+        <div class="button">
+            <x-button href="{{ route('admin.drivers.create') }}" primary label="Cadastrar" icon="plus" />
+        </div>
         <div class="search">
             <x-input wire:model="search" icon="search" placeholder="Buscar motorista" class="w-full" />
         </div>

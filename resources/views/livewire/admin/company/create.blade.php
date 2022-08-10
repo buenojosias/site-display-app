@@ -1,10 +1,6 @@
 <div>
     <x-dialog />
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Cadastrar empresa
-        </h2>
-    </x-slot>
+    <x-slot name="header">Cadastrar empresa</x-slot>
 
     <x-card title="Informações básicas">
         <form wire:submit.prevent="save">
