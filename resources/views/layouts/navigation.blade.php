@@ -9,9 +9,9 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">Dashboard</x-nav-link>
-              <x-nav-link :href="route('admin.companies.list')" :active="request()->routeIs('admin.companies.list')">Empresas</x-nav-link>
-              <x-nav-link :href="route('admin.drivers.list')" :active="request()->routeIs('admin.drivers.list')">Motoristas</x-nav-link>
-              <x-nav-link :href="route('admin.ads.index')" :active="request()->routeIs('admin.ads.index')">Campanhas</x-nav-link>
+              <x-nav-link :href="route('admin.companies.list')" :active="request()->routeIs('admin.companies*')">Empresas</x-nav-link>
+              <x-nav-link :href="route('admin.drivers.list')" :active="request()->routeIs('admin.drivers*')">Motoristas</x-nav-link>
+              <x-nav-link :href="route('admin.ads.index')" :active="request()->routeIs('admin.ads*')">Campanhas</x-nav-link>
             </div>
           </div>
         </div>
@@ -71,9 +71,9 @@
     >
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">Dashboard</x-responsive-nav-link>
-        <x-responsive-nav-link :href="route('admin.companies.list')" :active="request()->routeIs('admin.companies.list')">Empresas</x-responsive-nav-link>
-        <x-responsive-nav-link :href="route('admin.drivers.list')" :active="request()->routeIs('admin.drivers.list')">Motoristas</x-responsive-nav-link>
-        <x-responsive-nav-link :href="route('admin.ads.index')" :active="request()->routeIs('admin.ads.index')">Campanhas</x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('admin.companies.list')" :active="request()->routeIs('admin.companies*')">Empresas</x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('admin.drivers.list')" :active="request()->routeIs('admin.drivers*')">Motoristas</x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('admin.ads.index')" :active="request()->routeIs('admin.ads*')">Campanhas</x-responsive-nav-link>
       </div>
       <div class="pt-4 pb-3 border-t border-gray-700">
         <div class="flex items-center px-5">

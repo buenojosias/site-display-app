@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Livewire\Admin\Company;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\Company;
 use App\Models\CompanyAddress;
-
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
