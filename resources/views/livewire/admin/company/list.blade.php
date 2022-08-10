@@ -72,7 +72,7 @@
                         </td>
                         <td class="text-left">
                             <span @class([
-                                ' py-0.5 px-2 rounded-full text-xs',
+                                'py-0.5 px-2 rounded-full text-xs',
                                 'bg-green-200 text-green-900' => $company->active,
                                 'bg-red-200 text-red-900' => !$company->active,
                             ])>

@@ -18,6 +18,7 @@
 
 .table-wrapper {
     @apply bg-white overflow-x-auto shadow-sm rounded;
+    min-height: 200px;
 }
 .table {
     @apply min-w-max w-full table-auto;
