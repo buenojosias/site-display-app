@@ -44,6 +44,6 @@ class CompanyList extends Component
         ->orderBy('fantasy_name','asc')
         ->paginate(10);
 
-        return view('livewire.admin.company.company-list', compact(['companies','segments']));
+        return view('livewire.admin.company.list', compact(['companies','segments']));
     }
 }

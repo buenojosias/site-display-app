@@ -9,7 +9,7 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">{{ __('Dashboard') }}</x-nav-link>
-              <x-nav-link :href="route('admin.companies.index')" :active="request()->routeIs('admin.companies.index')">{{ __('Empresas') }}</x-nav-link>
+              <x-nav-link :href="route('admin.companies.list')" :active="request()->routeIs('admin.companies.list')">{{ __('Empresas') }}</x-nav-link>
               <x-nav-link :href="route('admin.drivers.index')" :active="request()->routeIs('admin.drivers.index')">{{ __('Motoristas') }}</x-nav-link>
               <x-nav-link :href="route('admin.ads.index')" :active="request()->routeIs('admin.ads.index')">{{ __('Campanhas') }}</x-nav-link>
             </div>
@@ -71,7 +71,7 @@
     >
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">{{ __('Dashboard') }}</x-responsive-nav-link>
-        <x-responsive-nav-link :href="route('admin.companies.index')" :active="request()->routeIs('admin.companies.index')">{{ __('Empresas') }}</x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('admin.companies.list')" :active="request()->routeIs('admin.companies.list')">{{ __('Empresas') }}</x-responsive-nav-link>
         <x-responsive-nav-link :href="route('admin.drivers.index')" :active="request()->routeIs('admin.drivers.index')">{{ __('Motoristas') }}</x-responsive-nav-link>
         <x-responsive-nav-link :href="route('admin.ads.index')" :active="request()->routeIs('admin.ads.index')">{{ __('Campanhas') }}</x-responsive-nav-link>
       </div>

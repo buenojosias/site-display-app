@@ -7,7 +7,7 @@
 
     <div class="list-header">
         <div class="button">
-            <x-button primary label="Adicionar" icon="plus" />
+            <x-button href="{{ route('admin.companies.create') }}" primary label="Cadastrar" icon="plus" />
         </div>
         <div class="search">
             <x-input wire:model="search" icon="search" placeholder="Buscar empresa" class="w-full" />
