@@ -19,6 +19,7 @@ class DriverFactory extends Factory
     public function definition()
     {
         return [
+            'name' => fake()->name(),
             'cpf' => rand(11111111111,99999999999),
             'region' => 'CWB',
             'active' => Arr::random([1,1,1,0]),

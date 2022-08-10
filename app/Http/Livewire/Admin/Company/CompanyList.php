@@ -12,11 +12,16 @@ class CompanyList extends Component
     use WithPagination;
 
     public $search = null;
+    public $status = null;
     public $segment = null;
     public $segments = [];
 
-    public function setSegment($idseg) {
+    public function filterSegment($idseg) {
         $this->segment = $idseg;
+    }
+
+    public function filterStatus($active) {
+        $this->status = $active;
     }
 
     public function mount() {
@@ -26,12 +31,15 @@ class CompanyList extends Component
     public function render()
     {
         $segments = $this->segments;
-        $companies = Company::
-        when($this->search, function($query){
+        $companies = Company::with('user','segment')
+        ->when($this->search, function($query){
             return $query->where('fantasy_name', 'LIKE', "%$this->search%");
         })
         ->when($this->segment, function($query){
             return $query->where('segment_id', $this->segment);
+        })
+        ->when($this->status, function($query){
+            return $query->where('active', $this->status);
         })
         ->orderBy('fantasy_name','asc')
         ->paginate(10);

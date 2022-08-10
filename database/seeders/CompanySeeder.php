@@ -15,6 +15,7 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
+        \App\Models\Company::factory(8)->hasAddress()->create();
         $users = User::where('type','COMPANY')->get();
         foreach($users as $user) {
             \App\Models\Company::factory(rand(1,2))->hasAddress()->create(['user_id' => $user->id]);

@@ -6,6 +6,16 @@
     @apply max-w-7xl mx-auto sm:px-6 lg:px-8;
 }
 
+.list-header {
+    @apply mb-6 flex flex-row items-center sm:flex-row-reverse justify-between flex-wrap;
+}
+.list-header > .button {
+    @apply w-full sm:w-2/5 lg:w-3/5 mb-2 sm:mb-0 grid justify-items-end;
+}
+.list-header > .search {
+    @apply w-full sm:w-3/5 lg:w-2/5;
+}
+
 .table-wrapper {
     @apply bg-white overflow-x-auto shadow-sm rounded;
 }
