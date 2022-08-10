@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Admin\{
+    Company\CompanyList
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +20,7 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('admin.index');
 
-Route::get('/empresas', function () {
-    return view('admin.companies.index');
-})->name('admin.companies.index');
+Route::get('/empresas', CompanyList::class)->name('admin.companies.index');
 
 Route::get('/motoristas', function () {
     return view('dashboard');

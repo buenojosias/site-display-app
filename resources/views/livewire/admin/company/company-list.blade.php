@@ -1,9 +1,18 @@
-<x-app-layout>
+<div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Empresas
         </h2>
     </x-slot>
+
+    <div class="mb-6 flex flex-row items-center sm:flex-row-reverse justify-between flex-wrap">
+        <div class="w-full sm:w-2/5 lg:w-3/5 mb-2 sm:mb-0 grid justify-items-end">
+            <x-button primary label="Adicionar" icon="plus" />
+        </div>
+        <div class="w-full sm:w-3/5 lg:w-2/5">
+            <x-input wire:model="search" icon="search" placeholder="Buscar empresa" class="w-full" />
+        </div>
+    </div>
 
     <div class="table-wrapper">
         <table class="table">
@@ -11,15 +20,29 @@
                 <tr>
                     <th class="left">Nome</th>
                     <th class="left">Representante</th>
-                    <th class="left">Segmento</th>
+                    <th class="left">
+                        <div class="flex items-center space-x-2">
+                            <span>Segmento</span>
+                            <x-dropdown class="font-normal normal-case">
+                                <x-dropdown.item
+                                    wire:click="setSegment('')"
+                                    label="TODOS"
+                                    class="item"
+                                />
+                                @foreach ($segments as $segment)
+                                    <x-dropdown.item
+                                        wire:click="setSegment({{$segment->id}})"
+                                        label="{{$segment->title}}"
+                                    />
+                                @endforeach
+                            </x-dropdown>
+                        </div>
+                    </th>
                     <th class="center">Status</th>
                     <th class="center">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                @php
-                    $companies = \App\Models\Company::with(['user', 'segment'])->paginate(10);
-                @endphp
                 @forelse ($companies as $company)
                     <tr>
                         <td class="whitespace-nowrap">
@@ -44,7 +67,7 @@
                             </div>
                         </td>
                         <td>
-                            {{ $company->user->name }}
+                            <a href="#" class="underline decoration-dotted decoration-sky-600">{{ $company->user->name }}</a>
                         </td>
                         <td>
                             {{ $company->segment->title }}
@@ -54,26 +77,17 @@
                         </td>
                         <td class="text-center">
                             <div class="flex item-center justify-center">
-                                <x-button.circle icon="home" />
-                                <div class="w-4 mr-2 transform hover:text-sky-800 cursor-pointer hover:scale-110">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                    </svg>
-                                </div>
-                                <div class="w-4 mr-2 transform hover:text-sky-800 cursor-pointer hover:scale-110">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                    </svg>
-                                </div>
+                                <x-button flat rounded icon="eye" class="px-1 py-1" />
+                                <x-button flat rounded icon="pencil" class="px-1 py-1" />
+                                <x-button flat rounded icon="collection" class="px-1 py-1" />
+                                <x-button flat rounded icon="cash" class="px-1 py-1" />
                             </div>
                         </td>
                     </tr>
                 @empty
-                    No records
+                    <div class="px-6 py-2">
+                        <p>Nenhum resultado encontrado.</p>
+                    </div>
                 @endforelse
             </tbody>
         </table>
@@ -81,5 +95,4 @@
             {{ $companies->links() }}
         </div>
     </div>
-
-</x-app-layout>
+</div>
