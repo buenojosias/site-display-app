@@ -1,13 +1,10 @@
 <x-app-layout>
-    <x-slot name="header">Detalhes da empresa</x-slot>
+    <x-slot name="header">Detalhes do motorista</x-slot>
 
-    <div class="w-full flex flex-col items-center sm:flex-row mb-8 px-3">
-        <div>
-            <img src="{{ asset('logos/lighting.png') }}" alt="Logo" class="w-32 sm:w-20 rounded-md">
-        </div>
-        <div class="flex-grow mx-4 py-2 flex flex-col text-center sm:text-left">
-            <h2 class="text-xl sm:text-2xl font-bold">{{ $company->fantasy_name }}</h2>
-            <h4 class="text-gray-800 font-semibold">{{ $segment->title }}</h4>
+    <div class="w-full flex flex-col items-center sm:flex-row mb-6 rounded px-3 bg-gray-50 shadow">
+        <div class="flex-grow mr-4 py-2 flex flex-col text-center sm:text-left">
+            <h2 class="text-xl sm:text-2xl font-bold">{{ $driver->name }}</h2>
+            <h4 class="text-gray-800 font-semibold">{{ $user->email ?? '' }}</h4>
         </div>
         <div class="flex flex-row gap-2 items-center">
             <x-button white label="Botão" />
@@ -22,25 +19,33 @@
                 <div class="px-3 py-2 border border-t-0 border-l-0 border-r-0 font-semibold">
                     Informações básicas
                 </div>
-                <div class="grid sm:grid-cols-2">
+                <div class="grid sm:grid-cols-3">
                     <div class="px-3 py-2">
-                        <p class="text-xs text-gray-700 font-semibold">CNPJ</p>
-                        {{-- <h5 class="font-semibold">{{ $company->cnpj }}</h5> --}}
+                        <p class="text-xs text-gray-700 font-semibold">Nome completo</p>
+                        <h5 class="font-semibold">{{ $driver->name }}</h5>
+                    </div>
+                    <div class="px-3 py-2">
+                        <p class="text-xs text-gray-700 font-semibold">CPF</p>
+                        {{-- <h5 class="font-semibold">{{ $driver->cpf }}</h5> --}}
                         <h5 class="font-semibold">
-                            {{ substr($company->cnpj, 0, 2) . '.' . substr($company->cnpj, 2, 3) . '.' . substr($company->cnpj, 5, 3) . '/' . substr($company->cnpj, 8, 4) . '-' . substr($company->cnpj, 12, 2) }}
+                            {{ substr($driver->cpf, 0, 3) . '.' . substr($driver->cpf, 3, 3) . '.' . substr($driver->cpf, 6, 3) . '-' . substr($driver->cpf, 9, 2) }}
                         </h5>
                     </div>
                     <div class="px-3 py-2">
-                        <p class="text-xs text-gray-700 font-semibold">Razão Social</p>
-                        <h5 class="font-semibold">{{ $company->corporate_name }}</h5>
+                        <p class="text-xs text-gray-700 font-semibold">E-mail</p>
+                        <h5 class="font-semibold">{{ $user->email ?? 'Usuário não atribuído' }}</h5>
                     </div>
                     <div class="px-3 py-2">
-                        <p class="text-xs text-gray-700 font-semibold">Representante</p>
-                        <h5 class="font-semibold">{{ $user->name ?? 'Não atribuído' }}</h5>
+                        <p class="text-xs text-gray-700 font-semibold">Status</p>
+                        <h5 class="font-semibold">{{ $driver->active ? 'Ativo' : 'Inativo' }}</h5>
+                    </div>
+                    <div class="px-3 py-2">
+                        <p class="text-xs text-gray-700 font-semibold">Trabalhando agora</p>
+                        <h5 class="font-semibold">{{ $driver->working ? 'Sim' : 'Não' }}</h5>
                     </div>
                     <div class="px-3 py-2">
                         <p class="text-xs text-gray-700 font-semibold">Data do cadastro</p>
-                        <h5 class="font-semibold">{{ $company->created_at->format('d/m/Y') }}</h5>
+                        <h5 class="font-semibold">{{ $driver->created_at->format('d/m/Y') }}</h5>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Company\{ CompanyList, CompanyCreate };
 use App\Http\Livewire\Admin\Driver\{ DriverList, DriverCreate };
 
-use App\Http\Controllers\{ CompanyController };
+use App\Http\Controllers\Admin\{ CompanyController, DriverController };
 
 Route::get('/', function () {
     return view('dashboard');
@@ -17,6 +17,7 @@ Route::get('/empresas/{company}', [CompanyController::class, 'show'])->name('adm
 
 Route::get('/motoristas', DriverList::class)->name('admin.drivers.list');
 Route::get('/motoristas/cadastro', DriverCreate::class)->name('admin.drivers.create');
+Route::get('/motoristas/{driver}', [DriverController::class, 'show'])->name('admin.drivers.show');
 
 Route::get('/campanhas', function () {
     return view('dashboard');
