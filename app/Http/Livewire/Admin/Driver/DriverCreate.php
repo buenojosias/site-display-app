@@ -86,6 +86,6 @@ class DriverCreate extends Component
     
     public function render()
     {
-        return view('livewire.admin.driver.create');
+        return view('admin.driver.create');
     }
 }

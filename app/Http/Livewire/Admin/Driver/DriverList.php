@@ -37,6 +37,6 @@ class DriverList extends Component
         ->orderBy('name','asc')
         ->paginate(10);
 
-        return view('livewire.admin.driver.list', compact('drivers'));
+        return view('admin.driver.list', compact('drivers'));
     }
 }

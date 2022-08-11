@@ -106,6 +106,6 @@ class CompanyCreate extends Component
         $this->city = 'Curitiba';
 
 
-        return view('livewire.admin.company.create');
+        return view('admin.company.create');
     }
 }
