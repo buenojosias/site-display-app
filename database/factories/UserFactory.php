@@ -17,11 +17,6 @@ class UserFactory extends Factory
      * @return array<string, mixed>
      */
 
-    public function withFaker()
-    {
-        return \Faker\Factory::create('pt_BR');
-    }
-
     public function definition()
     {
         return [

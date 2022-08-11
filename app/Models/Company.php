@@ -19,6 +19,10 @@ class Company extends Model
         return $this->hasOne(CompanyAddress::class);
     }
 
+    public function links() {
+        return $this->hasOne(Link::class);
+    }
+
     public function segment() {
         return $this->belongsTo(Segment::class);
     }
