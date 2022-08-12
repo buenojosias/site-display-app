@@ -14,6 +14,9 @@ class LinkSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // $companies = \App\Models\Company::all();
+        // foreach($companies as $company) {
+        //     \App\Models\Link::factory()->create(['company_id' => $company->id]);
+        // }
     }
 }

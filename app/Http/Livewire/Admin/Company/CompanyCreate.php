@@ -82,7 +82,7 @@ class CompanyCreate extends Component
                 'description' => 'Empresa salva com sucesso.',
                 'icon'        => 'success'
             ]);
-            // REDIRECIONAR
+            return redirect()->route('admin.companies.show', $company->id);
         } else {
             DB::rollBack();
             $this->dialog([

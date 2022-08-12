@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('links', function (Blueprint $table) {
+        Schema::create('advertisings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->constrained()->onDelete('cascade');
-            $table->string('slug');
-            $table->string('qrcode');
-            $table->string('phone', 10)->nullable();
-            $table->string('whatsapp', 11)->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('site')->nullable();
+            $table->string('title', 64);
+            $table->boolean('active')->default(false);
+            $table->float('latitude', 10, 6)->nullable();
+            $table->float('longitude', 10, 6)->nullable();
+            $table->date('expires_at')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('links');
+        Schema::dropIfExists('advertisings');
     }
 };

@@ -23,6 +23,10 @@ class Company extends Model
         return $this->hasOne(Link::class);
     }
 
+    public function advertising() {
+        return $this->hasMany(Advertising::class);
+    }
+
     public function segment() {
         return $this->belongsTo(Segment::class);
     }

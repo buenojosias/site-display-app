@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('segment_id')->nullable()->constrained()->onDelete('set null');
-            $table->string('region', 3);
             $table->string('fantasy_name');
             $table->string('corporate_name');
             $table->string('cnpj', 14);
             $table->string('logo')->nullable();
+            $table->string('region', 3);
             $table->boolean('active')->default(true);
             $table->integer('daily_limit')->nullable();
             $table->integer('day_balance')->nullable();

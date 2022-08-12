@@ -19,6 +19,8 @@ class LinkFactory extends Factory
     public function definition()
     {
         return [
+            'slug' => fake()->domainWord(),
+            'qrcode' => 'temp',
             'phone' => Arr::random([null,rand(4130000000,4136999999)]),
             'whatsapp' => Arr::random([null,rand(41987000000,41999999999)]),
             'facebook' => Arr::random([null,fake()->userName()]),
