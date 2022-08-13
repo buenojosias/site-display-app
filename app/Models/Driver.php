@@ -23,6 +23,10 @@ class Driver extends Model
         return $this->hasOne(Vehicle::class);
     }
 
+    public function displays() {
+        return $this->hasMany(Display::class);
+    }
+
     // tem tablet
     // tem jornadas
     // tem saldo

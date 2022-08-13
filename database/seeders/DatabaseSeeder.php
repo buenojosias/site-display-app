@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             // SegmentSeeder::class,
             // DriverSeeder::class,
             // CompanySeeder::class,
+            // AdvertisingSeeder::class,
         ]);
     }
 }

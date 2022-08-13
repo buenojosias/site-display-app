@@ -20,7 +20,7 @@ class AdvertisingFactory extends Factory
         return [
             'title' => fake()->realText($maxNbChars = 40, $indexSize = 1),
             'active' => Arr::random([0,0,1]),
-            'cps' => Arr::random([8,10,10,10,12]),
+            'cpd' => Arr::random([8,10,10,10,12]),
             'expires_at' => Arr::random([null,fake()->dateTimeBetween($startDate = 'now', $endDate = '+ 30 days', $timezone = null)]),
         ];
     }
