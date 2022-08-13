@@ -14,4 +14,10 @@ class CompanyController extends Controller
         $address = $company->address;
         return view('admin.company.show', compact(['company','segment','user','address']));
     }
+
+    public function advertisings($id)
+    {
+        $company = Company::findOrFail($id);
+        return view('admin.company.advertisings', compact('company'));
+    }
 }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">Detalhes da empresa</x-slot>
 
-    <div class="w-full flex flex-col items-center sm:flex-row mb-8 px-3">
+    <div class="w-full flex flex-col items-center sm:flex-row mb-8 px-3 py-4 bg-white shadow">
         <div>
             <img src="{{ asset('logos/lighting.png') }}" alt="Logo" class="w-32 sm:w-20">
         </div>

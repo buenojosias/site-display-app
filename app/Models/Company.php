@@ -23,7 +23,7 @@ class Company extends Model
         return $this->hasOne(Link::class);
     }
 
-    public function advertising() {
+    public function advertisings() {
         return $this->hasMany(Advertising::class);
     }
 
