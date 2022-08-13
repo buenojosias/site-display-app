@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('active')->default(false);
             $table->float('latitude', 10, 6)->nullable();
             $table->float('longitude', 10, 6)->nullable();
+            $table->integer('cps');
             $table->date('expires_at')->nullable();
             $table->timestamps();
         });
