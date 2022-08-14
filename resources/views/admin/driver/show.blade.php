@@ -28,7 +28,7 @@
                         <p class="text-xs text-gray-700 font-semibold">CPF</p>
                         {{-- <h5 class="font-semibold">{{ $driver->cpf }}</h5> --}}
                         <h5 class="font-semibold">
-                            {{ substr($driver->cpf, 0, 3) . '.' . substr($driver->cpf, 3, 3) . '.' . substr($driver->cpf, 6, 3) . '-' . substr($driver->cpf, 9, 2) }}
+                            {{ $driver->cpf }}
                         </h5>
                     </div>
                     <div class="px-3 py-2">

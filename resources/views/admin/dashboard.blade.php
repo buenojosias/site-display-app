@@ -1,17 +1,6 @@
 <x-app-layout>
-  <x-slot name="header">
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ Painel administrativo }}
-      </h2>
-      <x-button label="Botão" primary />
-  </x-slot>
-  
-  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="p-6 bg-white border-b border-gray-200">
-              CONTEÚDO AQUI...
-          </div>
-      </div>
-  </div>
-  
+    <x-slot name="header">Painel administrativo</x-slot>
+
+    CONTEÚDO AQUI...
+
 </x-app-layout>

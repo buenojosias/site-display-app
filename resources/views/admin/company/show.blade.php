@@ -27,7 +27,7 @@
                         <p class="text-xs text-gray-700 font-semibold">CNPJ</p>
                         {{-- <h5 class="font-semibold">{{ $company->cnpj }}</h5> --}}
                         <h5 class="font-semibold">
-                            {{ substr($company->cnpj, 0, 2) . '.' . substr($company->cnpj, 2, 3) . '.' . substr($company->cnpj, 5, 3) . '/' . substr($company->cnpj, 8, 4) . '-' . substr($company->cnpj, 12, 2) }}
+                            {{ $company->cnpj }}
                         </h5>
                     </div>
                     <div class="px-3 py-2">

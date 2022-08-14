@@ -53,10 +53,7 @@
                             <div class="flex item-center justify-center">
                                 <x-button flat rounded icon="eye" class="px-1 py-1" />
                                 <x-button flat rounded icon="pencil" class="px-1 py-1" />
-                                <x-button flat rounded icon="chart-bar" class="px-1 py-1" />
-                                @if ($advertising->active)
-                                    <x-button flat rounded icon="archive" class="px-1 py-1" />
-                                @endif
+                                <x-button href="{{ route('admin.advertisings.displays', $advertising) }}" flat rounded icon="chart-bar" class="px-1 py-1" />
                             </div>
                         </td>
                     </tr>

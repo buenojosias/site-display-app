@@ -95,17 +95,6 @@ class CompanyCreate extends Component
     
     public function render()
     {
-        $this->segment_id = '3';
-        $this->fantasy_name = 'Jockah\'s Barber';
-        $this->corporate_name = 'Josias S.A';
-        $this->cnpj = '12345678910';
-        $this->street_name = 'Rua Jorge Gava';
-        $this->number = '952';
-        $this->zipcode = '82110250';
-        $this->district = 'Pilarzinho';
-        $this->city = 'Curitiba';
-
-
         return view('admin.company.create');
     }
 }

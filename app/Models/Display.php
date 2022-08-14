@@ -13,6 +13,7 @@ class Display extends Model
 
     protected $keyType = 'string';
     public $incrementing = false;
+    protected $dates = ['datetime'];
 
     public function advertising() {
         return $this->belongsTo(Advertising::class);
@@ -20,6 +21,10 @@ class Display extends Model
 
     public function driver() {
         return $this->belongsTo(Driver::class);
+    }
+
+    public function getCostAttribute($cost) {
+        return "R$ " . number_format($cost/100, 2, ',', '.');
     }
 
 }

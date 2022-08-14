@@ -73,13 +73,13 @@
                             <div class="flex item-center justify-center">
                                 <x-button href="{{ route('admin.drivers.show', $driver) }}" flat rounded icon="eye" class="px-1 py-1" />
                                 <x-button flat rounded icon="pencil" class="px-1 py-1" />
-                                <x-button flat rounded icon="collection" class="px-1 py-1" />
+                                <x-button href="{{ route('admin.drivers.displays', $driver) }}" flat rounded icon="collection" class="px-1 py-1" />
                                 <x-button flat rounded icon="cash" class="px-1 py-1" />
                             </div>
                         </td>
                     </tr>
                 @empty
-                    Nenhum motorista encontrado
+                    Nenhum motorista encontrado.
                 @endforelse
             </tbody>
         </table>

@@ -14,4 +14,9 @@ class DriverController extends Controller
         $vehicle = $driver->vehicle;
         return view('admin.driver.show', compact(['driver','user','address','vehicle']));
     }
+
+    public function displays(Driver $driver)
+    {
+        return view('admin.driver.displays', compact('driver'));
+    }
 }

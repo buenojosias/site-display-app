@@ -18,7 +18,7 @@ class DisplaySeeder extends Seeder
         foreach($advertisings as $advertising) {
             \App\Models\Display::factory(rand(50,100))->create([
                 'advertising_id' => $advertising->id,
-                'cost' => $advertising->cps, // MUDAR PARA CPD
+                'cost' => $advertising->cpd,
             ]);
         }
     }
