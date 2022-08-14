@@ -51,7 +51,7 @@
                         </td>
                         <td class="text-center">
                             <div class="flex item-center justify-center">
-                                <x-button flat rounded icon="eye" class="px-1 py-1" />
+                                <x-button href="{{ route('admin.advertisings.show', $advertising) }}" flat rounded icon="eye" class="px-1 py-1" />
                                 <x-button flat rounded icon="pencil" class="px-1 py-1" />
                                 <x-button href="{{ route('admin.advertisings.displays', $advertising) }}" flat rounded icon="chart-bar" class="px-1 py-1" />
                             </div>
