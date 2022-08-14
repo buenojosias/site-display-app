@@ -31,7 +31,7 @@ class CompanyList extends Component
     public function render()
     {
         $segments = $this->segments;
-        $companies = Company::with('user','segment')
+        $companies = Company::with(['user','segment'])
         ->when($this->search, function($query){
             return $query->where('fantasy_name', 'LIKE', "%$this->search%");
         })
