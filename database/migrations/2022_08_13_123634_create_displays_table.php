@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('displays', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->foreignId('advertising_id')->constrained()->onDelete('cascade');
             $table->foreignId('driver_id')->nullable()->constrained()->onDelete('set null');
             $table->datetime('datetime');

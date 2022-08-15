@@ -18,6 +18,7 @@
                     <th class="left">Empresa</th>
                     <th class="center">Criação</th>
                     <th class="center">Expiração</th>
+                    <th class="center">Exibições</th>
                     <th class="left">
                         <div class="flex items-center space-x-2">
                             <span>Status</span>
@@ -40,6 +41,7 @@
                         </td>
                         <td class="text-center">{{ $advertising->created_at->format('d/m/Y') }}</td>
                         <td class="text-center">{{ $advertising->expires_at ? $advertising->expires_at : 'Indeterminada' }}</td>
+                        <td class="text-center">{{ $advertising->displays_count }}</td>
                         <td class="text-left">
                             <span @class([
                                 'py-0.5 px-2 rounded-full text-xs',

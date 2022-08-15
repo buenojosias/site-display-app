@@ -13,7 +13,7 @@
                 :max="now()"
                 wire:model="date"
             />
-        </div>    
+        </div>  
     </div>
 
     <div class="table-wrapper">

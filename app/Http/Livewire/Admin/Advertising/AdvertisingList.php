@@ -17,6 +17,7 @@ class AdvertisingList extends Component
     public function render()
     {
         $advertisings = Advertising::with('company')
+        ->withCount('displays')
         ->when($this->search, function($query){
             return $query->where('title', 'LIKE', "%$this->search%");
         })

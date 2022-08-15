@@ -19,8 +19,17 @@ class Advertising extends Model
         return $this->hasMany(Display::class);
     }
 
-    public function getCpdAttribute($cpd) {
-        return "R$ " . number_format($cpd/100, 2, ',', '.');
+    public function accesses() {
+        return $this->hasManyThrough(LinkAccess::class, Display::class);
     }
+
+    // public function setCpdAttribute($cpd) {
+    //     $cpd = number_format(str_replace(",",".",str_replace(".","",$cpd)), 2, '.', '');
+    //     return 8;
+    // }
+
+    // public function getCpdAttribute($cpd) {
+    //     return number_format($cpd/100, 2, ',', '.');
+    // }
 
 }

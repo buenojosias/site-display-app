@@ -11,7 +11,7 @@ class CompanyAdvertisings extends Component
 
     public function mount($company)
     {
-        $this->advertisings = Advertising::where('company_id', $company->id)->get();
+        $this->advertisings = Advertising::where('company_id', $company->id)->withCount('displays')->get();
     }
 
     public function render()

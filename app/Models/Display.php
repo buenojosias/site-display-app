@@ -23,6 +23,10 @@ class Display extends Model
         return $this->belongsTo(Driver::class);
     }
 
+    public function access() {
+        return $this->hasOne(LinkAccess::class);
+    }
+
     public function getCostAttribute($cost) {
         return "R$ " . number_format($cost/100, 2, ',', '.');
     }

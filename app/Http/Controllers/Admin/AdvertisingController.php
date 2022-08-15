@@ -13,14 +13,14 @@ class AdvertisingController extends Controller
     {
         $company = $advertising->load('company');
         $displays = $advertising->displays()->count();
-
+        $accesses = $advertising->accesses()->count();
         $dailyDisplays = $advertising->displays()->select(DB::raw('DATE(datetime) as date'), DB::raw('count(*) as total'))
         ->groupBy('date')
         ->orderBy('date', 'desc')
         ->take(7)
         ->get();
 
-        return view('admin.advertising.show', compact('advertising','company','displays','dailyDisplays'));
+        return view('admin.advertising.show', compact('advertising','company','displays','accesses','dailyDisplays'));
     }
 
     public function displays(Advertising $advertising)
