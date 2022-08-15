@@ -16,6 +16,6 @@ class CompanyAdvertisings extends Component
 
     public function render()
     {
-        return view('livewire.admin.company.advertisings', ['advertisings' => $this->advertisings]);
+        return view('admin.company.advertisings-livewire', ['advertisings' => $this->advertisings]);
     }
 }

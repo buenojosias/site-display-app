@@ -25,6 +25,6 @@ class DriverDisplays extends Component
         ->orderBy('datetime', 'desc')
         ->paginate();
 
-        return view('livewire.admin.driver.driver-displays', ['displays' => $displays]);
+        return view('admin.driver.displays-livewire', ['displays' => $displays]);
     }
 }

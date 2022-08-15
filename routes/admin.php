@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Company\{ CompanyList, CompanyCreate };
 use App\Http\Livewire\Admin\Driver\{ DriverList, DriverCreate };
 use App\Http\Livewire\Admin\Advertising\{ AdvertisingList };
+use App\Http\Livewire\Admin\Informative\{ InformativeList };
 
 use App\Http\Controllers\Admin\{ CompanyController, DriverController, AdvertisingController };
 
@@ -25,3 +26,5 @@ Route::get('/motoristas/{driver}/exibicoes', [DriverController::class, 'displays
 Route::get('/campanhas', AdvertisingList::class)->name('admin.advertisings.list');
 Route::get('/campanhas/{advertising}', [AdvertisingController::class, 'show'])->name('admin.advertisings.show');
 Route::get('/campanhas/{advertising}/exibicoes', [AdvertisingController::class, 'displays'])->name('admin.advertisings.displays');
+
+Route::get('/informativos', InformativeList::class)->name('admin.informatives.list');

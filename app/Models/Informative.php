@@ -9,6 +9,7 @@ class Informative extends Model
 {
     use HasFactory;
 
+    protected $dates = ['expires_at'];
     protected $fillable = ['title','active','expires_at'];
 
     // has mídia

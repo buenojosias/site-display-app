@@ -25,6 +25,6 @@ class AdvertisingDisplays extends Component
         ->orderBy('datetime', 'desc')
         ->paginate();
 
-        return view('livewire.admin.advertising.advertising-displays', ['displays' => $displays]);
+        return view('admin.advertising.displays-livewire', ['displays' => $displays]);
     }
 }
