@@ -12,5 +12,8 @@ class Informative extends Model
     protected $dates = ['expires_at'];
     protected $fillable = ['title','active','expires_at'];
 
-    // has mídia
+    public function video() {
+        return $this->morphOne(Video::class, 'videoable');
+    }
+    
 }

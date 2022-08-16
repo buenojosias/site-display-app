@@ -3,7 +3,7 @@
 
     <div class="list-header">
         <div class="button">
-            <x-button primary label="Criar nova" icon="plus" />
+            <x-button href="{{ route('admin.advertisings.create') }}" primary label="Criar nova" icon="plus" />
         </div>
         <div class="search">
             <x-input wire:model="search" icon="search" placeholder="Buscar campanha" class="w-full" />

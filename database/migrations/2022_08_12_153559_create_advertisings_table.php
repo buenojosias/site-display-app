@@ -21,7 +21,7 @@ return new class extends Migration
             $table->float('latitude', 10, 6)->nullable();
             $table->float('longitude', 10, 6)->nullable();
             $table->integer('cpd');
-            $table->date('expires_at')->nullable();
+            $table->datetime('expires_at');
             $table->timestamps();
         });
     }

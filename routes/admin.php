@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Admin\Company\{ CompanyList, CompanyCreate };
 use App\Http\Livewire\Admin\Driver\{ DriverList, DriverCreate };
-use App\Http\Livewire\Admin\Advertising\{ AdvertisingList };
-use App\Http\Livewire\Admin\Informative\{ InformativeList };
+use App\Http\Livewire\Admin\Advertising\{ AdvertisingList, AdvertisingCreate };
+use App\Http\Livewire\Admin\Informative\{ InformativeList, InformativeCreate };
 
 use App\Http\Controllers\Admin\{ CompanyController, DriverController, AdvertisingController };
 
@@ -24,7 +24,9 @@ Route::get('/motoristas/{driver}', [DriverController::class, 'show'])->name('adm
 Route::get('/motoristas/{driver}/exibicoes', [DriverController::class, 'displays'])->name('admin.drivers.displays');
 
 Route::get('/campanhas', AdvertisingList::class)->name('admin.advertisings.list');
+Route::get('/campanhas/nova', AdvertisingCreate::class)->name('admin.advertisings.create');
 Route::get('/campanhas/{advertising}', [AdvertisingController::class, 'show'])->name('admin.advertisings.show');
 Route::get('/campanhas/{advertising}/exibicoes', [AdvertisingController::class, 'displays'])->name('admin.advertisings.displays');
 
 Route::get('/informativos', InformativeList::class)->name('admin.informatives.list');
+Route::get('/informativos/novo', InformativeCreate::class)->name('admin.informatives.create');

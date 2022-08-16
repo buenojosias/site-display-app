@@ -9,7 +9,7 @@ class Advertising extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','active','latitude','longitude','cpd','expires_at'];
+    protected $fillable = ['company_id','title','active','latitude','longitude','cpd','expires_at'];
 
     public function company() {
         return $this->belongsTo(Company::class);
@@ -23,6 +23,10 @@ class Advertising extends Model
         return $this->hasManyThrough(LinkAccess::class, Display::class);
     }
 
+    public function video() {
+        return $this->morphOne(Video::class, 'videoable');
+    }
+    
     // public function setCpdAttribute($cpd) {
     //     $cpd = number_format(str_replace(",",".",str_replace(".","",$cpd)), 2, '.', '');
     //     return 8;
