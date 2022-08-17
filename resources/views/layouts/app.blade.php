@@ -35,9 +35,6 @@
             </div>
         </main>
     </div>
-    {{-- <script type="module">
-        import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
-    </script> --}}
     @livewireScripts
 </body>
 

@@ -7,7 +7,7 @@
             {{ $sidebar }}
         </div>
 
-        <div x-data x-cloak class="sb-container">
+        <div class="sb-container">
             {{ $slot }}
         </div>
 

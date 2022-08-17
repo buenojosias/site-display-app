@@ -1,8 +1,72 @@
-<div>
-    <x-dialog />
-    <x-slot name="header">Cadastrar empresa</x-slot>
 
-    <x-card title="Informações básicas">
+    ESTA VIEW SERÁ EXCLUÍDA
+
+<div>
+    <x-slot name="title">Cadastrar empresa</x-slot>
+
+    <x-slot name="sidebar">
+        <x-form-nav-link>Informações básicas</x-form-nav-link>
+        <x-form-nav-link>Endereço</x-form-nav-link>
+        <x-form-nav-link>Usuário</x-form-nav-link>
+        <x-form-nav-link>Contatos</x-form-nav-link>
+    </x-slot>
+
+    <div x-data="{ tab: @entangle('tab') }">
+        <template x-if="tab === 'company'">
+            <div>
+                {{-- <form wire:submit.prevent="saveCompany"> --}}
+                <div class="sb-header">
+                    <h2>Informações da empresa</h2>
+                </div>
+                
+                {{-- </form> --}}
+            </div>
+        </template>
+
+        <template x-if="tab === 'address'">
+            <div>
+                <div class="sb-header">
+                    <h2>Endereço</h2>
+                </div>
+                <div class="sb-body">
+                    <x-select label="Usuário responsável" wire:model.defer="user_id" placeholder="Selecione"
+                        :async-data="route('api.users')" option-label="name" option-value="id" hint="Opcional por enquanto" />
+                </div>
+                <div class="sb-footer">
+                    footer
+                </div>
+            </div>
+        </template>
+
+        <template x-if="tab === 'user'">
+            <div>
+                <div class="sb-header">
+                    <h2>Atribuir usuário</h2>
+                </div>
+                <div class="sb-body">
+                    body
+                </div>
+                <div class="sb-footer">
+                    footer
+                </div>
+            </div>
+        </template>
+
+        <template x-if="tab === 'link'">
+            <div>
+                <div class="sb-header">
+                    <h2>Links</h2>
+                </div>
+                <div class="sb-body">
+                    body
+                </div>
+                <div class="sb-footer">
+                    footer
+                </div>
+            </div>
+        </template>
+
+        {{-- <x-card title="Informações básicas">
         <form wire:submit.prevent="save">
             <x-errors class="mb-4" />
 
@@ -36,6 +100,9 @@
                 </div>
             </x-slot>
         </form>
-    </x-card>
+    </x-card> --}}
+    </div>
+
+</div>
 
 </div>

@@ -10,25 +10,27 @@ use WireUi\Traits\Actions;
 
 class CompanyCreate extends Component
 {
-    use Actions;
 
-    public $user_id, $segment_id, $region, $fantasy_name, $corporate_name, $cnpj;
+    // ESTE COMPONENTE SERÁ EXCLUÍDO
+    
+    
+    
     public $street_name, $number, $complement, $zipcode, $district, $city;
+    
+    public $user_id;
 
-    protected $rules = [
+    /*protected $rules = [
         'user_id' => 'nullable|integer',
-        'segment_id' => 'required|integer',
-        'fantasy_name' => 'required',
-        'corporate_name' => 'required',
-        'cnpj' => 'required|integer',
+        
+        
         'street_name' => 'required',
         'number' => 'required',
         'zipcode' => 'required|integer',
         'district' => 'required',
         'city' => 'required',
-    ];
+    ];*/
 
-    protected $validationAttributes = [
+    /*protected $validationAttributes = [
         'segment_id' => 'Segmento',
         'fantasy_name' => 'Nome Fantasia',
         'corporate_name' => 'Razão Social',
@@ -36,26 +38,12 @@ class CompanyCreate extends Component
         'number' => 'Número',
         'district' => 'Bairro',
         'city' => 'Cidade',
-    ];
+    ];*/
 
-    protected $messages = [
-        'cnpj.required' => 'O campo CNPJ é obrigatório.',
-        'zipcode.required' => 'O campo CEP é obrigatório.',
-    ];
-
-    public function save() {
-        $this->validate();
-
-        DB::beginTransaction();
-        try {
-            $company = Company::create([
-                'user_id' => $this->user_id,
-                'segment_id' => $this->segment_id,
-                'region' => 'CWB',
-                'fantasy_name' => $this->fantasy_name,
-                'corporate_name' => $this->corporate_name,
-                'cnpj' => $this->cnpj,
-            ]);
+    public function saveCompany() {
+    
+        
+/*
             if($company) {
                 $address = $company->address()->create([
                     'street_name' => $this->street_name,
@@ -67,34 +55,11 @@ class CompanyCreate extends Component
                     'state' => 'PR',
                 ]);
             }
-        } catch (\Throwable $th) {
-            $this->dialog([
-                'title'       => 'Erro!',
-                'description' => 'Erro ao salvar empresa.',
-                'icon'        => 'error'
-            ]);
-        }
-
-        if($company && $address) {
-            DB::commit();
-            $this->dialog([
-                'title'       => 'Concluído!',
-                'description' => 'Empresa salva com sucesso.',
-                'icon'        => 'success'
-            ]);
-            return redirect()->route('admin.companies.show', $company->id);
-        } else {
-            DB::rollBack();
-            $this->dialog([
-                'title'       => 'Erro!',
-                'description' => 'Erro ao salvar empresa.',
-                'icon'        => 'error'
-            ]);
-        }
+*/
     }
     
     public function render()
     {
-        return view('admin.company.create');
+        return view('admin.company.create')->layout('layouts.formside');
     }
 }
