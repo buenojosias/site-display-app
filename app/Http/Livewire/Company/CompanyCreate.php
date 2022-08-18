@@ -43,13 +43,14 @@ class CompanyCreate extends Component
         DB::beginTransaction();
         try {
             $company = Company::create($validatedCompany);
-            // Criar financeiro
+            $balance = $company->balance()->create();
         } catch (\Throwable $th) {
+            dd($th);
             $this->dialog([
                 'title' => 'Ops!','description'=>'Ocorreu um erro ao cadastrar empresa.','icon'=>'error'
             ]);
         }
-        if($company) {
+        if($company && $balance) {
             DB::commit();
             return redirect()->route('admin.companies.edit', $company)->with('success','Empresa cadastrada com sucesso!');
         } else {

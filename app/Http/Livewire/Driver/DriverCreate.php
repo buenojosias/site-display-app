@@ -28,13 +28,13 @@ class DriverCreate extends Component
         DB::beginTransaction();
         try {
             $driver = Driver::create($validatedDriver);
-            // Criar financeiro
+            $balance = $driver->balance()->create();
         } catch (\Throwable $th) {
             $this->dialog([
                 'title' => 'Ops!','description'=>'Ocorreu um erro ao cadastrar motorista.','icon'=>'error'
             ]);
         }
-        if($driver) {
+        if($driver && $balance) {
             DB::commit();
             return redirect()->route('admin.drivers.edit', $driver)->with('success','Motorista cadastrato com sucesso!');
         } else {
