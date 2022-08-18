@@ -27,6 +27,14 @@ class Company extends Model
         return $this->hasMany(Advertising::class);
     }
 
+    public function balance() {
+        return $this->morphOne(Balance::class, 'balanceable');
+    }
+
+    public function transictions() {
+        return $this->morphOne(Transiction::class, 'transictionable');
+    }
+
     public function segment() {
         return $this->belongsTo(Segment::class);
     }

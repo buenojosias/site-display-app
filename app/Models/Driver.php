@@ -23,6 +23,14 @@ class Driver extends Model
         return $this->hasOne(Vehicle::class);
     }
 
+    public function balance() {
+        return $this->morphOne(Balance::class, 'balanceable');
+    }
+
+    public function transictions() {
+        return $this->morphOne(Transiction::class, 'transictionable');
+    }
+
     public function displays() {
         return $this->hasMany(Display::class);
     }
