@@ -19,13 +19,13 @@ Route::get('/', function () {
 Route::get('/empresas', CompanyList::class)->name('admin.companies.list');
 Route::get('/empresas/cadastro', CompanyCreate::class)->name('admin.companies.create');
 Route::get('/empresas/{company}', [CompanyController::class, 'show'])->name('admin.companies.show');
-Route::get('/empresas/{company}/editar', [CompanyController::class, 'edit'])->name('admin.companies.edit');
+Route::get('/empresas/{company}/editar/{secao?}', [CompanyController::class, 'edit'])->name('admin.companies.edit');
 Route::get('/empresas/{id}/campanhas', [CompanyController::class, 'advertisings'])->name('admin.companies.advertisings');
 
 Route::get('/motoristas', DriverList::class)->name('admin.drivers.list');
 Route::get('/motoristas/cadastro', DriverCreate::class)->name('admin.drivers.create');
 Route::get('/motoristas/{driver}', [DriverController::class, 'show'])->name('admin.drivers.show');
-Route::get('/motoristas/{driver}/editar', [DriverController::class, 'edit'])->name('admin.drivers.edit');
+Route::get('/motoristas/{driver}/editar/{secao?}', [DriverController::class, 'edit'])->name('admin.drivers.edit');
 Route::get('/motoristas/{driver}/exibicoes', [DriverController::class, 'displays'])->name('admin.drivers.displays');
 
 Route::get('/campanhas', AdvertisingList::class)->name('admin.advertisings.list');

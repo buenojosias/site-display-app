@@ -72,6 +72,6 @@ class DriverVehicle extends Component
 
     public function render()
     {
-        return view('livewire.driver.driver-vehicle');
+        return view('livewire.driver.vehicle');
     }
 }

@@ -77,6 +77,6 @@ class DriverAddress extends Component
 
     public function render()
     {
-        return view('livewire.driver.driver-address');
+        return view('livewire.driver.address');
     }
 }

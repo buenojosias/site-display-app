@@ -1,5 +1,8 @@
 <div>
-    <x-dialog />
+
+    VERIFICAR E EXCLUIR VIEW
+    
+    {{-- <x-dialog />
     <x-slot name="header">Cadastrar motorista</x-slot>
 
     <x-card title="Informações básicas">
@@ -28,6 +31,6 @@
                 </div>
             </x-slot>
         </form>
-    </x-card>
+    </x-card> --}}
 
 </div>

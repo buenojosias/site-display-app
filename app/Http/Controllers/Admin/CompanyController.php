@@ -15,9 +15,9 @@ class CompanyController extends Controller
         return view('admin.company.show', compact(['company','segment','user','address']));
     }
 
-    public function edit(Company $company)
+    public function edit(Company $company, $secao = null)
     {
-        return view('admin.company.edit', compact('company'));
+        return view('admin.company.edit', compact('company','secao'));
     }
 
     public function advertisings($id)

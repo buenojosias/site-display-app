@@ -2,7 +2,7 @@
     <form wire:submit.prevent="saveAddress">
         <div class="sb-header">
             <h2>Endereço</h2>
-            <h5>Estas informações são úteis para a geocalização</h5>
+            <h5>Endereço do motorista</h5>
         </div>
         <div class="sb-body">
             <x-errors class="mb-4" />

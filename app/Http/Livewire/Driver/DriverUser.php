@@ -8,6 +8,6 @@ class DriverUser extends Component
 {
     public function render()
     {
-        return view('livewire.driver.driver-user');
+        return view('livewire.driver.user');
     }
 }

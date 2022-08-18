@@ -15,9 +15,9 @@ class DriverController extends Controller
         return view('admin.driver.show', compact(['driver','user','address','vehicle']));
     }
 
-    public function edit(Driver $driver)
+    public function edit(Driver $driver, $secao = null)
     {
-        return view('admin.driver.edit', compact('driver'));
+        return view('admin.driver.edit', compact('driver', 'secao'));
     }
 
     public function displays(Driver $driver)
