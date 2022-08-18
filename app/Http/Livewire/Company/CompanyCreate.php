@@ -30,7 +30,7 @@ class CompanyCreate extends Component
         $validatedCompany = $this->validate([
             'segment_id' => 'required|integer|min:1',
             'fantasy_name' => 'required|string|min:3|max:180',
-            'corporate_name' => 'required|string:min:5|max:180',
+            'corporate_name' => 'required|string|min:5|max:180',
             'cnpj' => 'required|string|size:14|unique:companies',
             'region' => 'required|string|size:3',
             'logo' => 'nullable|mimes:mimes:jpeg,png,jpg,jpeg|max:3072'
@@ -45,21 +45,19 @@ class CompanyCreate extends Component
             $company = Company::create($validatedCompany);
             // Criar financeiro
         } catch (\Throwable $th) {
-            dd($th);
             $this->dialog([
-                'title' => 'Erro!','description' => 'Erro ao salvar empresa.','icon' => 'error'
+                'title' => 'Ops!','description'=>'Ocorreu um erro ao cadastrar empresa.','icon'=>'error'
             ]);
         }
         if($company) {
             DB::commit();
-            return redirect()->route('admin.companies.edit', $company)->with('success', 'Empresa salva com sucesso!');
+            return redirect()->route('admin.companies.edit', $company)->with('success','Empresa cadastrada com sucesso!');
         } else {
             DB::rollBack();
             $this->dialog([
-                'title' => 'Erro!','description' => 'Erro ao salvar empresa.','icon' => 'error'
+                'title' => 'Ops!','description'=>'Ocorreu um erro ao cadastrar empresa.','icon'=>'error'
             ]);
         }
-
     }
 
     protected $validationAttributes = [

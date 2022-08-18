@@ -1,5 +1,5 @@
 <div>
-    <div class="list-header sm:flex-row"">
+    <div class="list-header sm:flex-row">
         <div class="flex-grow mb-4 sm:mb-0 p-2 flex flex-col text-left bg-white sm:bg-transparent">
             <h2 class="text-xl sm:text-xl font-bold">{{ $driver->name }}</h2>
             {{-- <h4 class="text-gray-800 font-semibold">{{ $advertising->company->fantasy_name }}</h4> --}}

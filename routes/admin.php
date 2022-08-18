@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Livewire\Company\{ CompanyCreate, CompanyEdit, CompanyAddress, CompanyContact, CompanyUser };
+use App\Http\Livewire\Company\{ CompanyCreate };
+use App\Http\Livewire\Driver\{ DriverCreate };
 
 use App\Http\Livewire\Admin\Company\{ CompanyList };
-use App\Http\Livewire\Admin\Driver\{ DriverList, DriverCreate };
+use App\Http\Livewire\Admin\Driver\{ DriverList };
 use App\Http\Livewire\Admin\Advertising\{ AdvertisingList, AdvertisingCreate };
 use App\Http\Livewire\Admin\Informative\{ InformativeList, InformativeCreate };
 
@@ -24,6 +25,7 @@ Route::get('/empresas/{id}/campanhas', [CompanyController::class, 'advertisings'
 Route::get('/motoristas', DriverList::class)->name('admin.drivers.list');
 Route::get('/motoristas/cadastro', DriverCreate::class)->name('admin.drivers.create');
 Route::get('/motoristas/{driver}', [DriverController::class, 'show'])->name('admin.drivers.show');
+Route::get('/motoristas/{driver}/editar', [DriverController::class, 'edit'])->name('admin.drivers.edit');
 Route::get('/motoristas/{driver}/exibicoes', [DriverController::class, 'displays'])->name('admin.drivers.displays');
 
 Route::get('/campanhas', AdvertisingList::class)->name('admin.advertisings.list');

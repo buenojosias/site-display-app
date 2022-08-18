@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('company_id')->constrained()->onDelete('cascade');
             $table->string('slug');
-            $table->string('phone', 10)->nullable();
+            $table->string('phone', 11)->nullable();
             $table->string('whatsapp', 11)->nullable();
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();

@@ -35,5 +35,4 @@ class Driver extends Model
     // tem jornadas
     // tem saldo
     // tem extrato
-    // tem exibições
 }

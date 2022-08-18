@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('model', 32);
             $table->string('color', 24);
             $table->year('year');
-            $table->string('license_plate', 8);
+            $table->string('license_plate', 8)->nullable();
             $table->timestamps();
         });
     }

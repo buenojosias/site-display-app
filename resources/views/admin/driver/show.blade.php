@@ -49,6 +49,7 @@
                     </div>
                 </div>
             </div>
+            @if ($address)
             <div class="mb-6 bg-white shadow-md">
                 <div class="px-3 py-2 border border-t-0 border-l-0 border-r-0 font-semibold">
                     Localização
@@ -76,6 +77,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
 
         <div>

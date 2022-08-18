@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Livewire\Company;
+namespace App\Http\Livewire\Driver;
 
 use Livewire\Component;
 use WireUi\Traits\Actions;
-use App\Models\Company;
+use App\Models\Driver;
 
-class CompanyAddress extends Component
+class DriverAddress extends Component
 {
     use Actions;
 
-    public $company;
+    public $driver;
     public $address;
     public $street_name, $number, $complement, $zipcode, $district, $city;
     public $state = "PR";
 
-    public function mount(Company $company)
+    public function mount(Driver $driver)
     {
-        $this->company = $company;
-        if($address = $company->address()->first()) {
+        $this->driver = $driver;
+        if($address = $driver->address()->first()) {
             $this->address = $address;
             $this->street_name = $address->street_name;
             $this->number = $address->number;
@@ -63,7 +63,7 @@ class CompanyAddress extends Component
             };
         } else {
             try {
-                $this->address = $this->company->address()->create($validatedAddress);
+                $this->address = $this->driver->address()->create($validatedAddress);
                 $this->dialog([
                     'title' => 'Sucesso!','description'=>'Endereço salvo com sucesso.','icon'=>'success'
                 ]);
@@ -77,6 +77,6 @@ class CompanyAddress extends Component
 
     public function render()
     {
-        return view('livewire.company.address');
+        return view('livewire.driver.driver-address');
     }
 }
