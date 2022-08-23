@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('drivers', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->string('cpf', 11);
-            $table->integer('default_reward');
-            $table->string('region', 3);
-            $table->boolean('active')->default(true);
-            $table->boolean('working')->default(false);
+            $table->string('title');
+            $table->date('date');
+            $table->string('source');
+            $table->string('url');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drivers');
+        Schema::dropIfExists('news');
     }
 };

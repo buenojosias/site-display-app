@@ -19,6 +19,8 @@ class InformativeFactory extends Factory
     {
         return [
             'title' => fake()->realText($maxNbChars = 40, $indexSize = 1),
+            'type' => Arr::random(['VIDEO','IMAGE']),
+            'url' => Arr::random([null,fake()->url()]),
             'active' => Arr::random([0,1,1]),
             'expires_at' => fake()->dateTimeBetween($startDate = 'now', $endDate = '+ 3 days', $timezone = null)
         ];

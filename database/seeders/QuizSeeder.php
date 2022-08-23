@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class InformativeSeeder extends Seeder
+class QuizSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class InformativeSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Informative::factory(30)->create();
+        \App\Models\Quiz::factory(8)->hasAlternatives(rand(3,4))->create();
     }
 }

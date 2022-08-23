@@ -21,6 +21,7 @@ class DriverFactory extends Factory
         return [
             'name' => fake()->name(),
             'cpf' => rand(11111111111,99999999999),
+            'default_reward' => Arr::random([30,40,40,40]),
             'region' => 'CWB',
             'active' => Arr::random([1,1,1,0]),
             'working' => Arr::random([0,1]),

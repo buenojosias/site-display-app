@@ -9,8 +9,9 @@ use App\Http\Livewire\Admin\Company\{ CompanyList };
 use App\Http\Livewire\Admin\Driver\{ DriverList };
 use App\Http\Livewire\Admin\Advertising\{ AdvertisingList, AdvertisingCreate };
 use App\Http\Livewire\Admin\Informative\{ InformativeList, InformativeCreate };
+use App\Http\Livewire\Admin\Transaction\{ TransactionDriver };
 
-use App\Http\Controllers\Admin\{ CompanyController, DriverController, AdvertisingController };
+use App\Http\Controllers\Admin\{ CompanyController, DriverController, AdvertisingController, RecordController };
 
 Route::get('/', function () {
     return view('admin.dashboard');
@@ -35,3 +36,7 @@ Route::get('/campanhas/{advertising}/exibicoes', [AdvertisingController::class, 
 
 Route::get('/informativos', InformativeList::class)->name('admin.informatives.list');
 Route::get('/informativos/novo', InformativeCreate::class)->name('admin.informatives.create');
+
+Route::get('/relatorios', [RecordController::class, 'index'])->name('admin.records');
+
+Route::get('/transacoes/motoristas', TransactionDriver::class)->name('admin.transactions.drivers');

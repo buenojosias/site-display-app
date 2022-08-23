@@ -25,6 +25,7 @@ class CompanyFactory extends Factory
             'fantasy_name' => $company,
             'corporate_name' => $company .' '. fake()->companySuffix(),
             'cnpj' => rand(10000000000000,99999999999999),
+            'default_cost' => Arr::random([8,10,10,10,12]),
             'active' => Arr::random([1,1,1,0]),
         ];
     }

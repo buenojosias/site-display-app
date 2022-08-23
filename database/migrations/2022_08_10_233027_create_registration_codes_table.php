@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('drivers', function (Blueprint $table) {
+        Schema::create('registration_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->string('cpf', 11);
-            $table->integer('default_reward');
-            $table->string('region', 3);
-            $table->boolean('active')->default(true);
-            $table->boolean('working')->default(false);
+            $table->string('code');
+            $table->string('type');
+            $table->string('document', 14);
+            $table->datetime('expires_at');
+            $table->boolean('expired')->default(false);
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drivers');
+        Schema::dropIfExists('registration_codes');
     }
 };

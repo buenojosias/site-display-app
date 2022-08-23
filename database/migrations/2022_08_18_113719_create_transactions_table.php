@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->string('id', 10)->primary();
-            $table->morphs('trasactionable');
+            $table->morphs('transactionable');
             $table->enum('type', ['P','E','R','W']);
             $table->tinyText('description');
             $table->integer('amount');

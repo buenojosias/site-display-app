@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('region', 3);
             $table->boolean('active')->default(true);
+            $table->integer('default_cost');
             $table->integer('daily_limit')->nullable();
             $table->integer('day_balance')->nullable();
             $table->timestamps();

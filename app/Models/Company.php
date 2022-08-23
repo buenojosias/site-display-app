@@ -31,16 +31,16 @@ class Company extends Model
         return $this->morphOne(Balance::class, 'balanceable');
     }
 
-    public function transictions() {
-        return $this->morphOne(Transiction::class, 'transictionable');
+    public function transactions() {
+        return $this->morphMany(Transaction::class, 'transactionable');
     }
 
     public function segment() {
         return $this->belongsTo(Segment::class);
     }
 
-    public function getCnpjAttribute($cnpj) {
-        return substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
-    }
+    // public function getCnpjAttribute($cnpj) {
+    //     return substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
+    // }
     
 }

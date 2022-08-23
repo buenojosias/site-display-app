@@ -27,20 +27,18 @@ class Driver extends Model
         return $this->morphOne(Balance::class, 'balanceable');
     }
 
-    public function transictions() {
-        return $this->morphOne(Transiction::class, 'transictionable');
+    public function transactions() {
+        return $this->morphMany(Transaction::class, 'transactionable');
     }
 
     public function displays() {
         return $this->hasMany(Display::class);
     }
 
-    public function getCpfAttribute($cpf) {
-        return substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
-    }
+    // public function getCpfAttribute($cpf) {
+    //     return substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
+    // }
 
     // tem tablet
     // tem jornadas
-    // tem saldo
-    // tem extrato
 }

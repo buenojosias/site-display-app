@@ -16,7 +16,7 @@ class AdvertisingSeeder extends Seeder
     {
         $companies = \App\Models\Company::inRandomOrder()->limit(15)->get();
         foreach($companies as $company) {
-            \App\Models\Advertising::factory(rand(1,3))->create(['company_id' => $company->id]);
+            \App\Models\Advertising::factory(rand(1,2))->create(['company_id' => $company->id, 'cpd' => $company->default_cost]);
         }
     }
 }

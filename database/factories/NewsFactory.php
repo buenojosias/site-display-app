@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Advertising>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\News>
  */
-class AdvertisingFactory extends Factory
+class NewsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,9 @@ class AdvertisingFactory extends Factory
     {
         return [
             'title' => fake()->realText($maxNbChars = 40, $indexSize = 1),
-            'active' => Arr::random([0,0,1]),
-            'expires_at' => fake()->dateTimeBetween($startDate = 'now', $endDate = '+ 30 days', $timezone = null),
+            'date' => fake()->dateTimeBetween($startDate = 'now', $endDate = '+ 2 days', $timezone = null),
+            'source' => Arr::random(['Terra','Uol','R7','BBC']),
+            'url' => fake()->url(),
         ];
     }
 }
