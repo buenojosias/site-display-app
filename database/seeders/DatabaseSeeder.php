@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            // preencher db
             RoleSeeder::class,
             UserSeeder::class,
             SegmentCategorySeeder::class,
