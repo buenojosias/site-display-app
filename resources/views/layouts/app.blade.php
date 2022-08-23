@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     @wireUiScripts
     @livewireStyles
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('build/assets/app.4be278cf.css') }}">
+    <script src="{{ asset('build/assets/app.ab93cf8a.js') }}"></script>
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <style>
         [x-cloak] {
             display: none !important;
