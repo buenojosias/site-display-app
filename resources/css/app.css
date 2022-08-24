@@ -23,7 +23,6 @@
 
 .table-wrapper {
     @apply bg-white overflow-x-auto shadow-sm rounded;
-    min-height: 200px;
 }
 .table {
     @apply min-w-max w-full table-auto;
@@ -48,6 +47,9 @@
 }
 .table td {
     @apply py-1.5 px-6;
+}
+.table td[colspan] {
+    @apply text-center py-8 font-semibold;
 }
 
 .sb-form {

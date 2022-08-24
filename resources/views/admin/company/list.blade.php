@@ -80,7 +80,7 @@
                                 <x-button href="{{ route('admin.companies.show', $company) }}" flat rounded icon="eye" class="px-1 py-1" />
                                 <x-button href="{{ route('admin.companies.edit', $company) }}" flat rounded icon="pencil" class="px-1 py-1" />
                                 <x-button href="{{ route('admin.companies.advertisings', $company->id) }}" flat rounded icon="collection" class="px-1 py-1" />
-                                <x-button flat rounded icon="cash" class="px-1 py-1" />
+                                <x-button href="{{ route('admin.balance', ['company', $company]) }}" flat rounded icon="cash" class="px-1 py-1" />
                             </div>
                         </td>
                     </tr>

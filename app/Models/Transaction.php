@@ -12,7 +12,7 @@ class Transaction extends Model
     protected $fillable = ['id','trasactionable','type','description','amount','before','after','displays_date'];
     protected $keyType = 'string';
     public $incrementing = false;
-    protected $dates = ['date'];
+    protected $dates = ['date','created_at'];
 
     public function transictionable()
     {

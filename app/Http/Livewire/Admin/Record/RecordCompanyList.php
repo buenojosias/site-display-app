@@ -29,7 +29,7 @@ class RecordCompanyList extends Component
             ->find($this->company_id);
         if($company) {
             $company->total_cost = $company->displays[0]->cost;
-            $new_balance = $company->balance->amount + $company->total_cost;
+            $new_balance = $company->balance->amount - $company->total_cost;
             DB::beginTransaction();
             $transaction = $company->transactions()->create([
                 'id' => strtoupper(Str::random(8)),
@@ -64,7 +64,7 @@ class RecordCompanyList extends Component
             ->get();
         foreach($companies as $company) {
             $company->total_cost = $company->displays[0]->cost;
-            $new_balance = $company->balance->amount + $company->total_cost;
+            $new_balance = $company->balance->amount - $company->total_cost;
             DB::beginTransaction();
             $transaction = $company->transactions()->create([
                 'id' => strtoupper(Str::random(8)),
@@ -79,7 +79,7 @@ class RecordCompanyList extends Component
             if($transaction && $balance){
                 DB::commit();
                 $this->dialog([
-                    'title' => 'Sucesso!','description'=>'Registro salvo com sucesso.','icon'=>'success'
+                    'title' => 'Sucesso!','description'=>'Registros salvos com sucesso.','icon'=>'success'
                 ]);
             } else {
                 DB::rollback();

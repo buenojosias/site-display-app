@@ -9,7 +9,7 @@ use App\Http\Livewire\Admin\Company\{ CompanyList };
 use App\Http\Livewire\Admin\Driver\{ DriverList };
 use App\Http\Livewire\Admin\Advertising\{ AdvertisingList, AdvertisingCreate };
 use App\Http\Livewire\Admin\Informative\{ InformativeList, InformativeCreate };
-use App\Http\Livewire\Admin\Transaction\{ TransactionDriver };
+use App\Http\Livewire\Admin\Balance\{ BalanceShow };
 
 use App\Http\Controllers\Admin\{ CompanyController, DriverController, AdvertisingController, RecordController };
 
@@ -38,3 +38,4 @@ Route::get('/informativos', InformativeList::class)->name('admin.informatives.li
 Route::get('/informativos/novo', InformativeCreate::class)->name('admin.informatives.create');
 
 Route::get('/relatorios/{secao?}', [RecordController::class, 'index'])->name('admin.records');
+Route::get('/financeiro/{modelable}/{id}', BalanceShow::class)->name('admin.balance');

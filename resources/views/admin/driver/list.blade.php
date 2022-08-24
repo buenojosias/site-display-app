@@ -74,7 +74,7 @@
                                 <x-button href="{{ route('admin.drivers.show', $driver) }}" flat rounded icon="eye" class="px-1 py-1" />
                                 <x-button href="{{ route('admin.drivers.edit', $driver) }}" flat rounded icon="pencil" class="px-1 py-1" />
                                 <x-button href="{{ route('admin.drivers.displays', $driver) }}" flat rounded icon="collection" class="px-1 py-1" />
-                                <x-button flat rounded icon="cash" class="px-1 py-1" />
+                                <x-button href="{{ route('admin.balance', ['driver', $driver]) }}" flat rounded icon="cash" class="px-1 py-1" />
                             </div>
                         </td>
                     </tr>
