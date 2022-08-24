@@ -37,6 +37,4 @@ Route::get('/campanhas/{advertising}/exibicoes', [AdvertisingController::class, 
 Route::get('/informativos', InformativeList::class)->name('admin.informatives.list');
 Route::get('/informativos/novo', InformativeCreate::class)->name('admin.informatives.create');
 
-Route::get('/relatorios', [RecordController::class, 'index'])->name('admin.records');
-
-Route::get('/transacoes/motoristas', TransactionDriver::class)->name('admin.transactions.drivers');
+Route::get('/relatorios/{secao?}', [RecordController::class, 'index'])->name('admin.records');

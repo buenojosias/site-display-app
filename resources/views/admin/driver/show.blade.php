@@ -1,21 +1,21 @@
 <x-app-layout>
     <x-slot name="header">Detalhes do motorista</x-slot>
 
-    <div class="w-full flex flex-col items-center sm:flex-row mb-6 rounded px-3 bg-gray-50 shadow">
-        <div class="flex-grow mr-4 py-2 flex flex-col text-center sm:text-left">
+    <div class="w-full flex flex-col items-center sm:flex-row mb-6 rounded py-4 px-3 bg-white shadow">
+        <div class="flex-grow mr-4 flex flex-col text-center sm:text-left">
             <h2 class="text-xl sm:text-2xl font-bold">{{ $driver->name }}</h2>
-            <h4 class="text-gray-800 font-semibold">{{ $user->email ?? '' }}</h4>
+            <h4 class="text-gray-800 text-sm font-semibold">{{ $user->email ?? '' }}</h4>
         </div>
         <div class="flex flex-row gap-2 items-center">
-            <x-button white label="Botão" />
-            <x-button primary label="Botão" />
+            <x-button href="{{ route('admin.drivers.displays', $driver) }}" white sm label="Exibições" />
+            <x-button href="{{ route('admin.drivers.edit', $driver) }}" primary sm label="Editar" />
         </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
         <div class="col-span-2">
-            <div class="mb-6 bg-white shadow-md">
+            <div class="mb-6 bg-white rounded shadow-md">
                 <div class="px-3 py-2 border border-t-0 border-l-0 border-r-0 font-semibold">
                     Informações básicas
                 </div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             @if ($address)
-            <div class="mb-6 bg-white shadow-md">
+            <div class="mb-6 bg-white rounded shadow-md">
                 <div class="px-3 py-2 border border-t-0 border-l-0 border-r-0 font-semibold">
                     Localização
                 </div>
@@ -81,7 +81,7 @@
         </div>
 
         <div>
-            <div class="mb-6 bg-white shadow-md">
+            <div class="mb-6 bg-white rounded shadow-md">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt earum perferendis officia adipisci
                 asperiores
                 vero sequi tempora pariatur vel, non laborum aperiam? Ut asperiores nesciunt error, animi consequuntur
@@ -90,7 +90,7 @@
         </div>
 
         <div>
-            <div class="mb-6 bg-white shadow-md">
+            <div class="mb-6 bg-white rounded shadow-md">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt earum perferendis officia adipisci
                 asperiores
                 vero sequi tempora pariatur vel, non laborum aperiam? Ut asperiores nesciunt error, animi consequuntur
@@ -99,7 +99,7 @@
         </div>
 
         <div class="col-span-2">
-            <div class="mb-6 bg-white shadow-md">
+            <div class="mb-6 bg-white rounded shadow-md">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam nihil, ducimus aspernatur fugit
                 temporibus, magni quidem enim obcaecati, nisi inventore laborum tempore earum a? Modi quae accusantium
                 amet

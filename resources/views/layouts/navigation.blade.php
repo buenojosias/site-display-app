@@ -12,6 +12,7 @@
               <x-nav-link :href="route('admin.companies.list')" :active="request()->routeIs('admin.companies*')">Empresas</x-nav-link>
               <x-nav-link :href="route('admin.drivers.list')" :active="request()->routeIs('admin.drivers*')">Motoristas</x-nav-link>
               <x-nav-link :href="route('admin.advertisings.list')" :active="request()->routeIs('admin.advertisings*')">Campanhas</x-nav-link>
+              <x-nav-link :href="route('admin.records')" :active="request()->routeIs('admin.records*')">Relatórios</x-nav-link>
               <x-nav-link :href="route('admin.informatives.list')" :active="request()->routeIs('admin.informatives*')">Informativos</x-nav-link>
             </div>
           </div>
@@ -78,6 +79,7 @@
         <x-responsive-nav-link :href="route('admin.companies.list')" :active="request()->routeIs('admin.companies*')">Empresas</x-responsive-nav-link>
         <x-responsive-nav-link :href="route('admin.drivers.list')" :active="request()->routeIs('admin.drivers*')">Motoristas</x-responsive-nav-link>
         <x-responsive-nav-link :href="route('admin.advertisings.list')" :active="request()->routeIs('admin.advertisings*')">Campanhas</x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('admin.records')" :active="request()->routeIs('admin.records*')">Relatórios</x-responsive-nav-link>
         <x-responsive-nav-link :href="route('admin.informatives.list')" :active="request()->routeIs('admin.informatives*')">Informativos</x-responsive-nav-link>
       </div>
       <div class="pt-4 pb-3 border-t border-gray-700">

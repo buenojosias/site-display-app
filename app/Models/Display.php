@@ -27,8 +27,8 @@ class Display extends Model
         return $this->hasOne(LinkAccess::class);
     }
 
-    public function getCostAttribute($cost) {
-        return "R$ " . number_format($cost/100, 2, ',', '.');
-    }
+    // public function getCostAttribute($cost) {
+    //     return "R$ " . number_format($cost/100, 2, ',', '.');
+    // }
 
 }

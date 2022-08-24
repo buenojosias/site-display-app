@@ -9,7 +9,7 @@ class CompanyController extends Controller
 {
     public function show(Company $company)
     {
-        $segment = $company->load('segment');
+        $segment = $company->segment()->first();
         $user = $company->user;
         $address = $company->address;
         return view('admin.company.show', compact(['company','segment','user','address']));

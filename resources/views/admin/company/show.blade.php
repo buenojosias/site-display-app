@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">Detalhes da empresa</x-slot>
 
-    <div class="w-full flex flex-col items-center sm:flex-row mb-8 px-3 py-4 bg-white shadow">
+    <div class="w-full flex flex-col items-center sm:flex-row mb-8 px-3 py-4 bg-white rounded shadow">
         <div>
             <img src="{{ asset('logos/lighting.png') }}" alt="Logo" class="w-32 sm:w-20">
         </div>
@@ -10,15 +10,15 @@
             <h4 class="text-gray-800 font-semibold">{{ $segment->title }}</h4>
         </div>
         <div class="flex flex-row gap-2 items-center">
-            <x-button white label="Botão" />
-            <x-button primary label="Botão" />
+            <x-button href="{{ route('admin.companies.advertisings', $company->id) }}" sm white label="Campanhas" />
+            <x-button href="{{ route('admin.companies.edit', $company) }}" sm primary label="Editar" />
         </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
         <div class="col-span-2">
-            <div class="mb-6 bg-white shadow-md">
+            <div class="mb-6 bg-white rounded shadow-md">
                 <div class="px-3 py-2 border border-t-0 border-l-0 border-r-0 font-semibold">
                     Informações básicas
                 </div>
@@ -45,47 +45,38 @@
                 </div>
             </div>
             @if ($address)
-            <div class="mb-6 bg-white shadow-md">
-                <div class="px-3 py-2 border border-t-0 border-l-0 border-r-0 font-semibold">
-                    Localização
+                <div class="mb-6 bg-white rounded shadow-md">
+                    <div class="px-3 py-2 border border-t-0 border-l-0 border-r-0 font-semibold">
+                        Localização
+                    </div>
+                    <div class="grid sm:grid-cols-2 md:grid-cols-3">
+                        <div class="px-3 py-2">
+                            <p class="text-xs text-gray-700 font-semibold">Endereço</p>
+                            <h5 class="font-semibold">{{ $address->street_name . ', ' . $address->number }}</h5>
+                        </div>
+                        <div class="px-3 py-2">
+                            <p class="text-xs text-gray-700 font-semibold">Complemento</p>
+                            <h5 class="font-semibold">{{ $address->complement }}</h5>
+                        </div>
+                        <div class="px-3 py-2">
+                            <p class="text-xs text-gray-700 font-semibold">Bairro</p>
+                            <h5 class="font-semibold">{{ $address->district ?? 'Não atribuído' }}</h5>
+                        </div>
+                        <div class="px-3 py-2">
+                            <p class="text-xs text-gray-700 font-semibold">CEP</p>
+                            <h5 class="font-semibold">{{ $address->zipcode }}</h5>
+                        </div>
+                        <div class="px-3 py-2 cols-span-2">
+                            <p class="text-xs text-gray-700 font-semibold">Cidade</p>
+                            <h5 class="font-semibold">{{ $address->city . '/' . $address->state }}</h5>
+                        </div>
+                    </div>
                 </div>
-                <div class="grid sm:grid-cols-2 md:grid-cols-3">
-                    <div class="px-3 py-2">
-                        <p class="text-xs text-gray-700 font-semibold">Endereço</p>
-                        <h5 class="font-semibold">{{ $address->street_name . ', ' . $address->number }}</h5>
-                    </div>
-                    <div class="px-3 py-2">
-                        <p class="text-xs text-gray-700 font-semibold">Complemento</p>
-                        <h5 class="font-semibold">{{ $address->complement }}</h5>
-                    </div>
-                    <div class="px-3 py-2">
-                        <p class="text-xs text-gray-700 font-semibold">Bairro</p>
-                        <h5 class="font-semibold">{{ $address->district ?? 'Não atribuído' }}</h5>
-                    </div>
-                    <div class="px-3 py-2">
-                        <p class="text-xs text-gray-700 font-semibold">CEP</p>
-                        <h5 class="font-semibold">{{ $address->zipcode }}</h5>
-                    </div>
-                    <div class="px-3 py-2 cols-span-2">
-                        <p class="text-xs text-gray-700 font-semibold">Cidade</p>
-                        <h5 class="font-semibold">{{ $address->city . '/' . $address->state }}</h5>
-                    </div>
-                </div>
-            </div>
             @endif
         </div>
 
         <div>
-            <div class="mb-6 bg-white shadow-md">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt earum perferendis officia adipisci
-                asperiores
-                vero sequi tempora pariatur vel, non laborum aperiam? Ut asperiores nesciunt error, animi consequuntur
-                ducimus ex?
-            </div>
-        </div>
-
-        <div>
-            <div class="mb-6 bg-white shadow-md">
+            <div class="mb-6 bg-white rounded shadow-md">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt earum perferendis officia adipisci
                 asperiores
                 vero sequi tempora pariatur vel, non laborum aperiam? Ut asperiores nesciunt error, animi consequuntur
@@ -94,7 +85,7 @@
         </div>
 
         <div class="col-span-2">
-            <div class="mb-6 bg-white shadow-md">
+            <div class="mb-6 bg-white rounded shadow-md">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam nihil, ducimus aspernatur fugit
                 temporibus, magni quidem enim obcaecati, nisi inventore laborum tempore earum a? Modi quae accusantium
                 amet
@@ -102,6 +93,17 @@
             </div>
         </div>
 
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="mb-6 bg-white rounded shadow-md">
+            <div class="px-3 py-2 border border-t-0 border-l-0 border-r-0 font-semibold">
+                Campanhas
+            </div>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3">
+                ggg
+            </div>
+        </div>
     </div>
 
 </x-app-layout>

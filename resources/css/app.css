@@ -32,10 +32,10 @@
     @apply bg-gray-200 text-gray-600 uppercase text-sm leading-normal;
 }
 .table th.center {
-    @apply py-3 px-6 text-center;
+    @apply py-2 px-6 text-center;
 }
 .table th.left {
-    @apply py-3 px-6 text-left;
+    @apply py-2 px-6 text-left;
 }
 .table tbody {
     @apply text-gray-600 text-sm font-light;
@@ -44,7 +44,7 @@
     @apply border-b border-gray-200 hover:bg-gray-50;
 }
 .table td {
-    @apply py-3 px-6;
+    @apply py-2 px-6;
 }
 
 .sb-form {
