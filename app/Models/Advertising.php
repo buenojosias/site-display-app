@@ -26,7 +26,7 @@ class Advertising extends Model
     public function video() {
         return $this->morphOne(Video::class, 'videoable');
     }
-    
+   
     // public function setCpdAttribute($cpd) {
     //     $cpd = number_format(str_replace(",",".",str_replace(".","",$cpd)), 2, '.', '');
     //     return 8;

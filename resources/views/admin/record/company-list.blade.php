@@ -5,10 +5,10 @@
                 placeholder="Buscar data por data" :max="now()->subDays(1)" wire:model="date" />
         </div>
         <div>
-            @if ($drivers->count() < 1)
+            @if ($companies->count() < 1)
                 <p class="text-sm">Nenhuma exibição registrada nesta data.</p>
             @endif
-            @if (\Carbon\Carbon::parse($date)->format('Y-m-d') < date('Y-m-d') && $drivers->count() > 0)
+            @if (\Carbon\Carbon::parse($date)->format('Y-m-d') < date('Y-m-d') && $companies->count() > 0)
                 <x-button wire:click="registerAll()" xs primary outline label="Lançar todas" />
             @endif
         </div>
@@ -17,22 +17,22 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th class="left">Motorista</th>
+                    <th class="left">Empresa</th>
                     <th>Exibições</th>
-                    <th>Recompensa</th>
+                    <th>Custo</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($drivers as $driver)
+                @foreach ($companies as $company)
                     <tr>
-                        <td class="text-left">{{ $driver->name }}</td>
-                        <td class="text-center">{{ $driver->displays_count }}</td>
-                        <td class="text-center">R$ {{ number_format($driver->reward / 100, 2, ',', '.') }}</td>
+                        <td class="text-left">{{ $company->fantasy_name }}</td>
+                        <td class="text-center">{{ $company->displays_count }}</td>
+                        <td class="text-center">R$ {{ number_format($company->total_cost / 100, 2, ',', '.') }}</td>
                         <td>
                             <div class="flex flex-row justify-end items-center">
-                                @if ($driver->transactions_count === 0)
-                                    <x-button wire:click.prevent="registerOne({{ $driver->id }})" flat primary
+                                @if ($company->transactions_count === 0)
+                                    <x-button wire:click.prevent="registerOne({{ $company->id }})" flat primary
                                         label="Lançar" class="my-0" />
                                 @else
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

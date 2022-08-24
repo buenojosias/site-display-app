@@ -39,6 +39,10 @@ class Company extends Model
         return $this->belongsTo(Segment::class);
     }
 
+    public function displays() {
+        return $this->hasManyThrough(Display::class, Advertising::class);
+    }
+
     // public function getCnpjAttribute($cnpj) {
     //     return substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
     // }

@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Admin\Record;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use App\Models\Driver;
 use WireUi\Traits\Actions;
@@ -45,7 +44,7 @@ class RecordDriverList extends Component
             if($transaction && $balance){
                 DB::commit();
                 $this->dialog([
-                    'title' => 'Sucesso!','description'=>'Informações salvas com sucesso.','icon'=>'success'
+                    'title' => 'Sucesso!','description'=>'Registro salvo com sucesso.','icon'=>'success'
                 ]);
             } else {
                 DB::rollback();
@@ -64,7 +63,6 @@ class RecordDriverList extends Component
             ->with('balance')
             ->whereDoesntHave('transactions', function($query) { $query->whereDate('displays_date', $this->formated_date); })
             ->get();
-                
         foreach($drivers as $driver) {
             $driver->reward = round($driver->displays[0]->cost * $driver->default_reward / 100);
             $new_balance = $driver->balance->amount + $driver->reward;
@@ -82,7 +80,7 @@ class RecordDriverList extends Component
             if($transaction && $balance){
                 DB::commit();
                 $this->dialog([
-                    'title' => 'Sucesso!','description'=>'Informações salvas com sucesso.','icon'=>'success'
+                    'title' => 'Sucesso!','description'=>'Registros salvos com sucesso.','icon'=>'success'
                 ]);
             } else {
                 DB::rollback();
@@ -96,7 +94,6 @@ class RecordDriverList extends Component
     public function render()
     {
         if($this->date == '') { $this->date = Carbon::yesterday(); }
-        //$this->date = '2022-08-22';
         $drivers = Driver::
             where('active', 1)
             ->whereHas('displays', function($query) {
@@ -110,20 +107,14 @@ class RecordDriverList extends Component
                 ->selectRaw('sum(cost) as cost, driver_id')
                 ->groupBy('driver_id');
             }])
-            /*->whereDoesntHave('transactions', function($query) {
-                $query->whereDate('displays_date', Carbon::parse($this->date)->format('Y-m-d'));
-            })*/
             ->withCount(['transactions' =>  function($query) {
                 $query->whereDate('displays_date', Carbon::parse($this->date)->format('Y-m-d'));
             }])
             ->get();
-
-            foreach($drivers as $driver) {
-                $driver->reward = round($driver->displays[0]->cost * $driver->default_reward / 100);
-            }
-
-            $this->drivers = $drivers;
-            //dd($this->drivers);
-            return view('admin.record.drivers-list');
+        foreach($drivers as $driver) {
+            $driver->reward = round($driver->displays[0]->cost * $driver->default_reward / 100);
+        }
+        $this->drivers = $drivers;
+        return view('admin.record.drivers-list');
     }
 }
