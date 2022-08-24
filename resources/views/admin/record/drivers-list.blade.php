@@ -3,7 +3,7 @@
     <div class="list-header sm:flex-row p-2 pb-0">
         <div class="search">
             <x-datetime-picker without-time without-timezone without-tips clearable=false
-                placeholder="Buscar data por data" {{-- :max="now()->subDays(1)" --}} wire:model="date" />
+                placeholder="Buscar data por data" :max="now()->subDays(1)" wire:model="date" />
         </div>
         <div>
             @if ($drivers->count() < 1)
@@ -19,7 +19,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th class="text-left">Motorista</th>
+                    <th class="left">Motorista</th>
                     <th>Exibições</th>
                     <th>Recompensa</th>
                     <th></th>
