@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('news_categories')->onDelete('cascade');
             $table->string('title');
             $table->date('date');
-            $table->string('source');
+            $table->string('source')->nullable();
             $table->string('url');
             $table->timestamps();
         });

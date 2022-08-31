@@ -11,6 +11,10 @@ class News extends Model
 
     protected $fillable = ['title','date','source','url'];
 
+    public function category() {
+        return $this->belongsTo(NewsCategory::class);
+    }
+
     public function thumbnail() {
         return $this->morphOne(Image::class, 'imageable');
     }

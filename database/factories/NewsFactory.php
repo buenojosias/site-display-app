@@ -19,7 +19,8 @@ class NewsFactory extends Factory
     {
         return [
             'title' => fake()->realText($maxNbChars = 40, $indexSize = 1),
-            'date' => fake()->dateTimeBetween($startDate = 'now', $endDate = '+ 2 days', $timezone = null),
+            'category_id' => rand(1,4),
+            'date' => fake()->dateTimeBetween($startDate = '- 1 days', $endDate = '+ 1 days', $timezone = null),
             'source' => Arr::random(['Terra','Uol','R7','BBC']),
             'url' => fake()->url(),
         ];

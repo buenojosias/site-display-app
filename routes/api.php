@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Controllers\Api\{
-    AuthController,
+    AuthController, AdvertisingController, NewsController
 };
 
 /*
@@ -26,6 +26,17 @@ Route::prefix('auth')->group(function(){
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('advertisings', [AdvertisingController::class, 'index']);
+Route::get('news', [NewsController::class, 'index']);
+
+
+
+
+
+
+
+
 
 Route::get('segments', function(Request $request){
     return \App\Models\Segment::query()
