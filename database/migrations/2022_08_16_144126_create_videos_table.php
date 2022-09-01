@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->morphs('videoable');
+            $table->string('filename');
             $table->string('path');
             $table->integer('duration')->nullable();
             $table->timestamps();

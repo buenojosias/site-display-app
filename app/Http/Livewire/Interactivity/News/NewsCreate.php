@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\News;
 
@@ -23,7 +24,8 @@ class NewsCreate extends Component
     public $url;
     public $thumbnail;
     public $validThumbnail;
-    private $updatedThumbnail;
+    private $filename;
+    private $path;
 
     protected $validationAttributes = [
         'category_title' => 'Título da categoria',
@@ -32,7 +34,7 @@ class NewsCreate extends Component
         'date' => 'Data',
         'source' => 'Origem',
         'url' => 'URL (link)',
-        'thumbnail' => 'Thumbnail (imagem)'
+        'thumbnail' => 'Thumbnail (imagem)',
     ];
 
     public function render()
@@ -53,31 +55,28 @@ class NewsCreate extends Component
         ]);
 
         try {
-            $this->updatedThumbnail = env('APP_URL').'/'.$this->thumbnail->store('midias/news');
+            $this->filename = $this->thumbnail->store('midias/news', 's3');
+            $this->path = Storage::disk('s3')->url($this->filename);
         } catch (\Throwable $th) {
+            $this->dialog(['description' => 'Ocorreu um erro ao salvar a imagem.','icon'=>'error']);
             dd($th);
         }
 
         DB::beginTransaction();
         try {
             $news = News::create($validatedNews);
-            $image = $news->thumbnail()->create(['path' => $this->updatedThumbnail]);
+            $image = $news->thumbnail()->create(['filename' => $this->filename, 'path' => $this->path]);
         } catch (\Throwable $th) {
-            dd($th);
-            $this->dialog([
-                'title' => 'Ops!','description'=>'Ocorreu um erro ao salvar a notícia.','icon'=>'error'
-            ]);
+            $this->dialog(['description'=>'Ocorreu um erro ao salvar a notícia.','icon'=>'error']);
         }
-        if($news && $image) {
+        if(@$news && @$image) {
             DB::commit();
             return redirect()->route('admin.interactivity.news.list')->with('success','Notícia salva com sucesso!');
         } else {
             DB::rollBack();
-            $this->dialog([
-                'title' => 'Ops!','description'=>'Ocorreu um erro ao salvar a notícia.','icon'=>'error'
-            ]);
+            Storage::disk('s3')->delete($this->filename);
+            $this->dialog(['description'=>'Ocorreu um erro ao salvar a notícia.','icon'=>'error']);
         }
-        
     }
 
     public function saveCategory() {

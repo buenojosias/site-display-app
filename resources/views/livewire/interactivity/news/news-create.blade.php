@@ -68,26 +68,6 @@
                             <img src="{{ $validThumbnail->temporaryUrl() }}">
                         @endif
                     </div>
-
-                    {{-- <div class="col-span-3" x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
-                        x-on:livewire-upload-finish="isUploading = false"
-                        x-on:livewire-upload-error="isUploading = false"
-                        x-on:livewire-upload-progress="progress = $event.detail.progress">
-                        <div class="mb-4">
-                            <x-input type="file" wire:model.defer="thumbnail" label="Thumbnail (imagem)" />
-                        </div>
-                        <div>
-                            <div x-show="isUploading" class="mt-4 w-full rounded-3xl">
-                                <progress class="w-full h-6 rounded-3xl" max="100"
-                                    x-bind:value="progress"></progress>
-                            </div>
-                            <div x-show="!isUploading">
-                                @if ($validThumbnail)
-                                    <img src="{{ $validThumbnail->temporaryUrl() }}">
-                                @endif
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
                 <div class="mt-6 sb-footer">
                     <a class="text-sm mt-2 text-gray-600 hover:text-gray-900" href="#">Cancelar</a>

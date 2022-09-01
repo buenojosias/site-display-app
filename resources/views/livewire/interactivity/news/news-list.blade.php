@@ -1,6 +1,10 @@
 <div>
     <x-slot name="title">Notícias</x-slot>
 
+    @if (session('success'))
+        <x-success message="{{ session('success') }}" />
+    @endif
+
     <div class="flex justify-between mb-4">
         <x-button href="{{ route('admin.interactivity.news.create') }}" sm primary label="Cadastrar nova" />
         <x-button sm white label="Remover antigas" />
@@ -29,7 +33,7 @@
                             <td>{{ $news->date }}</td>
                             <td>{{ $news->source }}</td>
                             <td>
-                                <x-button wire:click="deleteOne({{$news->id}})" flat negative sm icon="trash" />
+                                <x-button wire:click="deleteOne({{ $news->id }})" flat negative sm icon="trash" />
                             </td>
                         </tr>
                     @endforeach

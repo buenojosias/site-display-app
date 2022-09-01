@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Interactivity\News;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
 use WireUi\Traits\Actions;
 use App\Models\News;
 
@@ -19,12 +20,19 @@ class NewsList extends Component
     }
 
     public function deleteOne($id) {
-        $n = News::findOrFail($id);
+        $news = News::with('thumbnail')->findOrFail($id);
         try {
-            $n->delete();
-            $this->dialog(['title' => 'Sucesso!','description'=>'Notícia removida com sucesso.','icon'=>'success']);
+            Storage::disk('s3')->delete($news->thumbnail->filename);
         } catch (\Throwable $th) {
-            $this->dialog(['title' => 'Erro!','description'=>'Erro ao remover notícia.','icon'=>'error']);
+            $this->dialog(['description'=>'Ocorreu um erro ao excluir a imagem.','icon'=>'error']);
+            dd($th);
+        }
+        try {
+            $news->thumbnail->delete();
+            $news->delete();
+            $this->dialog(['description'=>'Notícia excluída com sucesso.','icon'=>'success']);
+        } catch (\Throwable $th) {
+            $this->dialog(['description'=>'Ocorreu um erro ao excluir a notícia.','icon'=>'error']);
             dd($th);
         }
     }

@@ -9,7 +9,7 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['videoable','path','duration'];
+    protected $fillable = ['videoable','filename','path','duration'];
 
     public function videoable()
     {
