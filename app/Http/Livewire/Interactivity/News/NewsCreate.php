@@ -53,7 +53,7 @@ class NewsCreate extends Component
         ]);
 
         try {
-            $this->updatedThumbnail = env(APP_URL).'/storage/'.$this->thumbnail->store('midias/news');
+            $this->updatedThumbnail = env('APP_URL').'/storage/'.$this->thumbnail->store('midias/news');
         } catch (\Throwable $th) {
             dd($th);
         }
