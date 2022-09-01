@@ -10,7 +10,11 @@ class Informative extends Model
     use HasFactory;
 
     protected $dates = ['expires_at'];
-    protected $fillable = ['title','active','expires_at'];
+    protected $fillable = ['category_id','title','type','url','active','expires_at'];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 
     public function video() {
         return $this->morphOne(Video::class, 'videoable');

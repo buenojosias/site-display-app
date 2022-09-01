@@ -3,7 +3,7 @@
 
     <div class="list-header">
         <div class="button">
-            <x-button href="{{ route('admin.informatives.create') }}" primary label="Criar novo" icon="plus" />
+            <x-button href="{{ route('admin.interactivity.informatives.create') }}" primary label="Criar novo" icon="plus" />
         </div>
         <div class="search">
             <x-input wire:model="search" icon="search" placeholder="Buscar informativo" class="w-full" />
@@ -54,7 +54,7 @@
                     </tr>
                 @empty
                 <div class="px-6 py-2">
-                    <p>Nenhuma campanha encontrada.</p>
+                    <p>Nenhum informativo cadastrado.</p>
                 </div>
                 @endforelse
             </tbody>

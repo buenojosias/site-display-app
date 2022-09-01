@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Informative;
+namespace App\Http\Livewire\Interactivity\Informative;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -61,7 +61,7 @@ class InformativeCreate extends Component
 
     public function render()
     {
-        return view('admin.informative.create')->layout('layouts.formside');
+        return view('livewire.interactivity.informative.create')->layout('layouts.interactivity');
     }
 
 }

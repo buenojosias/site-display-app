@@ -8,8 +8,11 @@ use App\Http\Livewire\Driver\{ DriverCreate };
 use App\Http\Livewire\Admin\Company\{ CompanyList };
 use App\Http\Livewire\Admin\Driver\{ DriverList };
 use App\Http\Livewire\Admin\Advertising\{ AdvertisingList, AdvertisingCreate };
-use App\Http\Livewire\Admin\Informative\{ InformativeList, InformativeCreate };
 use App\Http\Livewire\Admin\Balance\{ BalanceShow };
+
+use App\Http\Livewire\Interactivity\InteractivityHome;
+use App\Http\Livewire\Interactivity\Informative\{ InformativeList, InformativeCreate };
+use App\Http\Livewire\Interactivity\News\{ NewsList, NewsCreate };
 
 use App\Http\Controllers\Admin\{ CompanyController, DriverController, AdvertisingController, RecordController };
 
@@ -34,8 +37,13 @@ Route::get('/campanhas/nova', AdvertisingCreate::class)->name('admin.advertising
 Route::get('/campanhas/{advertising}', [AdvertisingController::class, 'show'])->name('admin.advertisings.show');
 Route::get('/campanhas/{advertising}/exibicoes', [AdvertisingController::class, 'displays'])->name('admin.advertisings.displays');
 
-Route::get('/informativos', InformativeList::class)->name('admin.informatives.list');
-Route::get('/informativos/novo', InformativeCreate::class)->name('admin.informatives.create');
-
 Route::get('/relatorios/{secao?}', [RecordController::class, 'index'])->name('admin.records');
 Route::get('/financeiro/{modelable}/{id}', BalanceShow::class)->name('admin.balance');
+
+Route::prefix('interatividade')->name('admin.interactivity.')->group(function() {
+    Route::get('/', InteractivityHome::class)->name('home');
+    Route::get('/noticias', NewsList::class)->name('news.list');
+    Route::get('/noticias/nova', NewsCreate::class)->name('news.create');
+    Route::get('/informativos', InformativeList::class)->name('informatives.list');
+    Route::get('/informativos/novo', InformativeCreate::class)->name('informatives.create');
+});

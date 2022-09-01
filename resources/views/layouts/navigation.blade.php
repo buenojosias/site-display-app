@@ -13,7 +13,7 @@
               <x-nav-link :href="route('admin.drivers.list')" :active="request()->routeIs('admin.drivers*')">Motoristas</x-nav-link>
               <x-nav-link :href="route('admin.advertisings.list')" :active="request()->routeIs('admin.advertisings*')">Campanhas</x-nav-link>
               <x-nav-link :href="route('admin.records')" :active="request()->routeIs('admin.records*')">Relatórios</x-nav-link>
-              <x-nav-link :href="route('admin.informatives.list')" :active="request()->routeIs('admin.informatives*')">Informativos</x-nav-link>
+              <x-nav-link :href="route('admin.interactivity.home')" :active="request()->routeIs('admin.interactivity*')">Interatividade</x-nav-link>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@
         <x-responsive-nav-link :href="route('admin.drivers.list')" :active="request()->routeIs('admin.drivers*')">Motoristas</x-responsive-nav-link>
         <x-responsive-nav-link :href="route('admin.advertisings.list')" :active="request()->routeIs('admin.advertisings*')">Campanhas</x-responsive-nav-link>
         <x-responsive-nav-link :href="route('admin.records')" :active="request()->routeIs('admin.records*')">Relatórios</x-responsive-nav-link>
-        <x-responsive-nav-link :href="route('admin.informatives.list')" :active="request()->routeIs('admin.informatives*')">Informativos</x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('admin.interactivity.home')" :active="request()->routeIs('admin.interactivity*')">Interatividade</x-responsive-nav-link>
       </div>
       <div class="pt-4 pb-3 border-t border-gray-700">
         <div class="flex items-center px-5">

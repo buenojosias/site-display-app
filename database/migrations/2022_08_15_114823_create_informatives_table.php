@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('informatives', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->enum('type', ['VIDEO', 'IMAGE', 'TEXT']);
             $table->string('url')->nullable();
-            $table->boolean('active')->default(false);
+            $table->boolean('active')->default(true);
             $table->datetime('expires_at');
             $table->timestamps();
         });

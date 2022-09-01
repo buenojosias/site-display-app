@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
             $table->string('answer');
+            $table->boolean('correct')->nullable();
             $table->timestamps();
         });
     }

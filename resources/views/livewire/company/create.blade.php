@@ -13,6 +13,7 @@
                     placeholder="00.000.000/0000-00" />
                 <x-input wire:model.defer="corporate_name" label="Razão social" />
                 <x-input wire:model.defer="fantasy_name" label="Nome fantasia" />
+                <x-input type="number" min="0" wire:model.defer="default_cost" label="Custo padrão" class="pr-24" suffix="centavos" />
             </div>
             <div class="grid-2" x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
                 x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"

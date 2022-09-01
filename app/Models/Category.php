@@ -10,9 +10,17 @@ class NewsCategory extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['title'];
+    protected $fillable = ['title','type'];
 
     public function news() {
         return $this->hasMany(News::class);
+    }
+
+    public function informatives() {
+        return $this->hasMany(Informative::class);
+    }
+    
+    public function quizzes() {
+        return $this->hasMany(Quiz::class);
     }
 }

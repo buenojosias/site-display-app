@@ -9,7 +9,7 @@ class QuizAlternative extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['answer'];
+    protected $fillable = ['answer','correct'];
 
     public function quiz() {
         return $this->belongsTo(Quiz::class);

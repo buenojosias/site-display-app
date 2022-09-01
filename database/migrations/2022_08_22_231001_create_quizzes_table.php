@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('question');
+            $table->enum('type', ['TEST','SURVEY']);
+            $table->boolean('registrable')->default(false);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

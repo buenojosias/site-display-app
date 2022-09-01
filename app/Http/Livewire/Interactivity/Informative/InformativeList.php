@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Informative;
+namespace App\Http\Livewire\Interactivity\Informative;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -27,6 +27,6 @@ class InformativeList extends Component
         ->orderBy('created_at','desc')
         ->paginate(10);
 
-        return view('admin.informative.list', ['informatives' => $informatives]);
+        return view('livewire.interactivity.informative.list', ['informatives' => $informatives])->layout('layouts.interactivity');
     }
 }

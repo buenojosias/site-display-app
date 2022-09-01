@@ -18,6 +18,7 @@ class CompanyCreate extends Component
     public $logo;
     public $validLogo;
     public $path;
+    public $default_cost;
 
     public function updated() {
         $this->validate([
@@ -33,7 +34,8 @@ class CompanyCreate extends Component
             'corporate_name' => 'required|string|min:5|max:180',
             'cnpj' => 'required|string|size:14|unique:companies',
             'region' => 'required|string|size:3',
-            'logo' => 'nullable|mimes:mimes:jpeg,png,jpg,jpeg|max:3072'
+            'logo' => 'nullable|mimes:mimes:jpeg,png,jpg,jpeg|max:3072',
+            'default_cost' => 'required|integer|min:0|max:99',
         ]);
 
         if($this->logo) {
@@ -67,6 +69,7 @@ class CompanyCreate extends Component
         'cnpj' => 'CNPJ',
         'corporate_name' => 'Razão Social',
         'logo' => 'Logomarca',
+        'default_cost' => 'Custo padrão'
     ];
 
     public function render()
