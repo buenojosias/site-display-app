@@ -6,7 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Facades\DB;
-use App\Models\NewsCategory;
+use App\Models\Category;
 use App\Models\News;
 
 class NewsCreate extends Component
@@ -38,7 +38,7 @@ class NewsCreate extends Component
     public function render()
     {
         $this->date = date('Y-m-d');
-        $this->categories = NewsCategory::orderBy('title', 'asc')->get();
+        $this->categories = Category::where('type', 'news')->orderBy('title', 'asc')->get();
         return view('livewire.interactivity.news.news-create')->layout('layouts.interactivity');
     }
 
@@ -85,7 +85,10 @@ class NewsCreate extends Component
             'category_title' => 'required|string|min:3|max:64',
         ]);
         try {
-            NewsCategory::create(['title' => $this->category_title]);
+            Category::create([
+                'title' => $this->category_title,
+                'type' => 'news'
+            ]);
             $this->category_title = '';
         } catch (\Throwable $th) {
             dd($th);

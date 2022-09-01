@@ -24,22 +24,22 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ])->roles()->attach(1);
-        User::create([
-            'name' => 'Ivone Neves',
-            'email' => 'ivone@email.com',
-            'type' => 'ADMIN',
-            'password' => bcrypt('123456'),
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-        ])->roles()->attach(2);
-        User::create([
-            'name' => 'Laércio Santos',
-            'email' => 'laercio@email.com',
-            'type' => 'ADMIN',
-            'password' => bcrypt('123456'),
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-        ])->roles()->attach(2);
+        // User::create([
+        //     'name' => 'Ivone Neves',
+        //     'email' => 'ivone@email.com',
+        //     'type' => 'ADMIN',
+        //     'password' => bcrypt('123456'),
+        //     'email_verified_at' => now(),
+        //     'remember_token' => Str::random(10),
+        // ])->roles()->attach(2);
+        // User::create([
+        //     'name' => 'Laércio Santos',
+        //     'email' => 'laercio@email.com',
+        //     'type' => 'ADMIN',
+        //     'password' => bcrypt('123456'),
+        //     'email_verified_at' => now(),
+        //     'remember_token' => Str::random(10),
+        // ])->roles()->attach(2);
 
         \App\Models\User::factory(50)->create();
     }
