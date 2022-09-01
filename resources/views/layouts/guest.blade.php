@@ -15,7 +15,7 @@
         @wireUiScripts
         <link rel="stylesheet" href="{{ asset('build/assets/app.4be278cf.css') }}">
         <script src="{{ asset('build/assets/app.ab93cf8a.js') }}" defer></script>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
