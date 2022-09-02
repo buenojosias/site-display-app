@@ -36,9 +36,9 @@
                         </td>
                     </tr>
                 @empty
-                <div class="px-6 py-2">
-                    <p>Nenhuma campanha encontrada.</p>
-                </div>
+                <tr>
+                    <td colspan="6">Nenhuma campanha encontrada.</td>
+                </tr>
                 @endforelse
             </tbody>
             

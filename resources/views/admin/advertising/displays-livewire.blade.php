@@ -37,7 +37,9 @@
                         <td>...</td>
                     </tr>
                 @empty
-                    Nenhuma exibição.
+                <tr>
+                    <td colspan="5">Nenhuma exibição.</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

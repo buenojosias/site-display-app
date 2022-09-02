@@ -49,7 +49,7 @@
                                 @if ($company->logo)
                                     <div class="mr-2">
                                         <img class="w-6 h-6 rounded-full border-gray-200 border transform hover:scale-125"
-                                            src="{{ asset('logos/'.$company->logo) }}" alt="Logo">
+                                            src="{{ $company->logo->path }}" alt="Logo">
                                     </div>
                                 @endif
                                 <span class="font-medium">{{ $company->fantasy_name }}</span>
@@ -85,9 +85,9 @@
                         </td>
                     </tr>
                 @empty
-                    <div class="px-6 py-2">
-                        <p>Nenhum resultado encontrado.</p>
-                    </div>
+                <tr>
+                    <td colspan="5">Nenhum resultado encontrado.</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

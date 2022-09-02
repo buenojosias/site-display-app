@@ -11,6 +11,8 @@ class Advertising extends Model
 
     protected $fillable = ['company_id','title','active','latitude','longitude','cpd','expires_at'];
 
+    protected $dates = ['expires_at'];
+
     public function company() {
         return $this->belongsTo(Company::class);
     }

@@ -40,12 +40,12 @@ class NewsCreate extends Component
 
     public function updated() {
         $this->validate([
-            'thumbnail' => 'mimes:mimes:jpeg,png,jpg,webp|max:3072',
+            'thumbnail' => 'mimes:mimes:jpeg,png,jpg,jpeg|max:3072',
         ]);
         $this->validThumbnail = $this->thumbnail;
     }
 
-    public function saveNews() {
+   public function saveNews() {
         $validatedNews = $this->validate([
             'title' => 'required|string|min:10|max:255',
             'category_id' => 'required|integer|min:1',

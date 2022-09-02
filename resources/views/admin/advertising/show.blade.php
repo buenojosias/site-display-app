@@ -1,6 +1,10 @@
 <x-app-layout>
     <x-slot name="header">Detalhes da campanha</x-slot>
 
+    @if (session('success'))
+        <x-success message="{{ session('success') }}" />
+    @endif
+
     <div class="grid sm:grid-cols-2 mb-6 rounded bg-white shadow divide-x">
         <div class="p-3">
             <h5 class="text-sm font-semibold">Título</h5>
@@ -12,7 +16,8 @@
                 <h3 class="font-bold">{{ $advertising->company->fantasy_name }}</h3>
             </div>
             <div>
-                <x-button href="{{ route('admin.companies.show', $advertising->company) }}" flat rounded xl icon="external-link" class="pl-3 pr-3 pt-3 pb-3" />
+                <x-button href="{{ route('admin.companies.show', $advertising->company) }}" flat rounded xl
+                    icon="external-link" class="pl-3 pr-3 pt-3 pb-3" />
             </div>
         </div>
     </div>
@@ -28,7 +33,8 @@
                 <h5 class="text-sm font-semibold">exibições</h5>
             </div>
             <div>
-                <x-button href="{{ route('admin.advertisings.displays', $advertising) }}" flat rounded xl icon="external-link" class="pl-3 pr-3 pt-3 pb-3" />
+                <x-button href="{{ route('admin.advertisings.displays', $advertising) }}" flat rounded xl
+                    icon="external-link" class="pl-3 pr-3 pt-3 pb-3" />
             </div>
         </div>
         <div class="p-3">

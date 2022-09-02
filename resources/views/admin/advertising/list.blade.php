@@ -40,7 +40,7 @@
                             <a href="{{ route('admin.companies.show', $advertising->company->id) }}" class="underline decoration-dotted decoration-sky-600">{{ $advertising->company->fantasy_name }}</a>
                         </td>
                         <td class="text-center">{{ $advertising->created_at->format('d/m/Y') }}</td>
-                        <td class="text-center">{{ $advertising->expires_at ? $advertising->expires_at : 'Indeterminada' }}</td>
+                        <td class="text-center">{{ $advertising->expires_at ? $advertising->expires_at->format('d/m/Y H:i') : 'Indeterminada' }}</td>
                         <td class="text-center">{{ $advertising->displays_count }}</td>
                         <td class="text-left">
                             <span @class([
@@ -60,9 +60,9 @@
                         </td>
                     </tr>
                 @empty
-                <div class="px-6 py-2">
-                    <p>Nenhuma campanha encontrada.</p>
-                </div>
+                <tr>
+                    <td colspan="7">Nenhuma campanha encontrada.</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

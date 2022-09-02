@@ -3,9 +3,7 @@
 
     <x-slot name="sidebar">
         <div class="px-3 text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, deserunt adipisci perspiciatis ipsum iste
-            praesentium voluptatibus totam sed cumque ab, corrupti id odit! Incidunt blanditiis tempora beatae corrupti,
-            repellendus cupiditate.
+            
         </div>
     </x-slot>
 
@@ -22,7 +20,7 @@
                     <option value="{{ $company->id }}">{{ $company->fantasy_name }}</option>
                 @endforeach
             </x-native-select>
-            <x-input wire:model.defer="title" hint="Não será exibido para o passageiro" label="Título" />
+            <x-input wire:model.defer="title" cornerHint="Não será exibido para o passageiro" label="Título" />
         </div>
         <div class="grid-3">
             <x-datetime-picker without-timezone without-tips label="Exibir até" placeholder="Expiração"

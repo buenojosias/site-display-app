@@ -4,24 +4,29 @@ namespace App\Http\Livewire\Admin\Advertising;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use WireUi\Traits\Actions;
 use App\Models\Advertising;
 use App\Models\Company;
 
 class AdvertisingCreate extends Component
 {
-    use Actions;
     use WithFileUploads;
+    use Actions;
     
-    public $company_id, $title, $cpd, $latitude, $longitude, $expires_at, $video;
+    public $company_id, $title, $cpd, $latitude, $longitude, $expires_at;
+    public $video;
     public $validVideo;
-    public $path;
+    private $filename;
+    private $path;
 
     protected $validationAttributes = [
         'company_id' => 'Empresa',
         'title' => 'Título',
         'cpd' => 'Custo por exibição',
         'expires_at' => 'Data de expiração',
+        'video' => 'Vídeo',
     ];
 
     public function updated() {
@@ -39,7 +44,16 @@ class AdvertisingCreate extends Component
             'expires_at' => 'required|date|after:now',
             'video' => 'mimetypes:video/avi,video/mpeg,video/mp4|max:10240',
         ]);
-        $this->path = $this->video->store('videos');
+
+        try {
+            $this->filename = $this->video->store('midias/advertisings', 's3');
+            $this->path = Storage::disk('s3')->url($this->filename);
+        } catch (\Throwable $th) {
+            $this->dialog(['description' => 'Ocorreu um erro ao salvar o vídeo.','icon'=>'error']);
+            dd($th);
+        }
+
+        DB::beginTransaction();
         try {
             $advertising = Advertising::create([
                 'company_id' => $this->company_id,
@@ -50,27 +64,24 @@ class AdvertisingCreate extends Component
                 'cpd' => $this->cpd,
                 'expires_at' => \Carbon\Carbon::parse($this->expires_at)->format('Y-m-d H:i'),
             ]);
-            $advertising->video()->create([
-                'path' => $this->path,
-            ]);
-            $this->dialog([
-                'title'       => 'Sucesso!',
-                'description' => 'Campanha salva com sucesso!',
-                'icon'        => 'success'
-            ]);
+            $video = $advertising->video()->create(['filename' => $this->filename,'path' => $this->path,]);
         } catch (\Throwable $th) {
-            dd($th);
-            $this->dialog([
-                'title'       => 'Erro!',
-                'description' => 'Erro ao salvar campanha.',
-                'icon'        => 'error'
-            ]);
+            $this->dialog(['description'=>'Ocorreu um erro ao salvar a campanha.','icon'=>'error']);
+        }
+
+        if(@$advertising && @$video) {
+            DB::commit();
+            return redirect()->route('admin.advertisings.show', $advertising)->with('success','Campanha salva com sucesso!');
+        } else {
+            DB::rollBack();
+            Storage::disk('s3')->delete($this->filename);
+            $this->dialog(['description'=>'Ocorreu um erro ao salvar a campanha.','icon'=>'error']);
         }
     }
 
     public function render()
     {
-        $companies = Company::select(['id','fantasy_name'])->where('active', true)->orderBy('fantasy_name', 'asc')->get();
+        $companies = Company::select(['id','fantasy_name','default_cost'])->where('active', true)->orderBy('fantasy_name', 'asc')->get();
         return view('admin.advertising.create', ['companies' => $companies])->layout('layouts.formside');
     }
 }
