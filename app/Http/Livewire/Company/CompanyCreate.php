@@ -33,7 +33,7 @@ class CompanyCreate extends Component
 
     public function updated() {
         $this->validate([
-            'logo' => 'mimes:mimes:jpeg,png,jpg,jpeg|max:3072',
+            'logo' => 'mimes:mimes:jpeg,png,jpg,jpeg,webp|max:3072',
         ]);
         $this->validLogo = $this->logo;
     }
@@ -45,7 +45,7 @@ class CompanyCreate extends Component
             'corporate_name' => 'required|string|min:5|max:180',
             'cnpj' => 'required|string|size:14|unique:companies',
             'region' => 'required|string|size:3',
-            'logo' => 'nullable|mimes:mimes:jpeg,png,jpg,jpeg|max:3072',
+            'logo' => 'nullable|mimes:mimes:jpeg,png,jpg,webp|max:3072',
         ]);
 
         if($this->logo) {

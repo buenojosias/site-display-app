@@ -40,7 +40,7 @@ class NewsCreate extends Component
 
     public function updated() {
         $this->validate([
-            'thumbnail' => 'mimes:jpeg,png,jpg,jpeg|max:3072',
+            'thumbnail' => 'mimes:jpeg,png,jpg,jpeg,webp|max:3072',
         ]);
         $this->validThumbnail = $this->thumbnail;
     }

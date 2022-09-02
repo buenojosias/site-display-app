@@ -15,7 +15,7 @@ class InformativeCreate extends Component
     use Actions;
     use WithFileUploads;
     
-    public $categories, $category_title, $category_id, $title, $type, $url, $active, $expires_at;
+    public $categories, $category_title, $category_id, $title, $type, $url, $active = false, $expires_at;
     public $media;
     public $validMedia;
     public $filename;
@@ -40,7 +40,7 @@ class InformativeCreate extends Component
     public function updatedMedia() {
         $this->validate([
             'type' => 'required',
-            'media' => $this->type === 'IMAGE' ? 'mimes:jpeg,png,jpg,jpeg,webp|max:3072' : 'mimetypes:video/avi,video/mpeg,video/mp4|max:10240',
+            'media' => $this->type === 'IMAGE' ? 'mimes:jpeg,png,jpg,webp|max:3072' : 'mimetypes:video/avi,video/mpeg,video/mp4|max:10240',
         ]);
         $this->validMedia = $this->media;
     }
@@ -53,11 +53,11 @@ class InformativeCreate extends Component
             'url' => 'nullable|url',
             'active' => 'required|boolean',
             'expires_at' => 'required|date|after:now',
-            'media' => $this->type === 'IMAGE' ? 'mimes:jpeg,png,jpg,jpeg,webp|max:3072' : 'mimetypes:video/avi,video/mpeg,video/mp4|max:10240',
+            'media' => $this->type === 'IMAGE' ? 'mimes:jpeg,png,jpg,webp|max:3072' : 'mimetypes:video/avi,video/mpeg,video/mp4|max:10240',
         ]);
 
         try {
-            $this->filename = $this->media->store('midias/informative', 's3');
+            $this->filename = $this->media->store('midias/informatives', 's3');
             $this->path = Storage::disk('s3')->url($this->filename);
         } catch (\Throwable $th) {
             $this->dialog(['description' => 'Ocorreu um erro ao salvar a mídia.','icon'=>'error']);

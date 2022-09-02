@@ -6,7 +6,7 @@
             <x-form-nav-link :href="route('admin.interactivity.informatives.list')" :active="request()->routeIs('admin.interactivity.informatives*')" label="Informativos" />
             <x-form-nav-link :href="route('admin.interactivity.news.list')" :active="request()->routeIs('admin.interactivity.news*')" label="Notícias" />
             <x-form-nav-link href="#" label="Campeonatos" />
-            <x-form-nav-link href="#" label="Quizes" />
+            <x-form-nav-link :href="route('admin.interactivity.quizzes.list')" :active="request()->routeIs('admin.interactivity.quizzes*')" label="Quizes" />
         </div>
         <div class="col-span-5">
             {{ $slot }}
