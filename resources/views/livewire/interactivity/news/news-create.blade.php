@@ -31,7 +31,6 @@
                     </div>
 
                     <div class="col-span-4">
-
                         @if (!$validThumbnail)
                             <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
                                 x-on:livewire-upload-finish="isUploading = false"

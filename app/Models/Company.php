@@ -9,7 +9,7 @@ class Company extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','segment_id','region','fantasy_name','corporate_name','cnpj','logo','active','default_cost','daily_limit','day_balance'];
+    protected $fillable = ['user_id','segment_id','region','fantasy_name','corporate_name','cnpj','active','default_cost','daily_limit','day_balance'];
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -25,6 +25,10 @@ class Company extends Model
 
     public function advertisings() {
         return $this->hasMany(Advertising::class);
+    }
+
+    public function logo() {
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     public function balance() {

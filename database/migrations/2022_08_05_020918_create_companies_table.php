@@ -20,10 +20,9 @@ return new class extends Migration
             $table->string('fantasy_name');
             $table->string('corporate_name');
             $table->string('cnpj', 14);
-            $table->string('logo')->nullable();
             $table->string('region', 3);
             $table->boolean('active')->default(true);
-            $table->integer('default_cost');
+            $table->integer('default_cost')->nullable();
             $table->integer('daily_limit')->nullable();
             $table->integer('day_balance')->nullable();
             $table->timestamps();

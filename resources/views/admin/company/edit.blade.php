@@ -14,6 +14,8 @@
                 active="{{ $secao === 'link' }}" label="Link" />
             <x-form-nav-link href="{{ route('admin.companies.edit', [$company, 'user']) }}"
                 active="{{ $secao === 'user' }}" label="Usuário" />
+            <x-form-nav-link href="{{ route('admin.companies.edit', [$company, 'settings']) }}"
+                active="{{ $secao === 'settings' }}" label="Configurações" />
             {{-- <x-form-nav-link href="{{ route('admin.companies.edit', [$company, 'setup']) }}" label="Configuração" /> --}}
         </div>
         <div class="sb-container">
@@ -28,6 +30,9 @@
             @endif
             @if ($secao === 'link')
                 @livewire('company.company-link', ['company' => $company])
+            @endif
+            @if ($secao === 'settings')
+                @livewire('company.company-settings', ['company' => $company])
             @endif
         </div>
     </div>

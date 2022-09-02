@@ -31,13 +31,9 @@ class CompanyEdit extends Component
 
         try {
             $this->company->update($validatedCompany);
-            $this->dialog([
-                'title' => 'Sucesso!','description'=>'Empresa atualizada com sucesso.','icon'=>'success'
-            ]);
+            $this->dialog(['description'=>'Empresa atualizada com sucesso.','icon'=>'success']);
         } catch (\Throwable $th) {
-            $this->dialog([
-                'title' => 'Ops!','description'=>'Ocorreu um erro ao atualizar empresa.','icon'=>'error'
-            ]);
+            $this->dialog([ 'description'=>'Ocorreu um erro ao atualizar empresa.','icon'=>'error']);
         }
     }
 

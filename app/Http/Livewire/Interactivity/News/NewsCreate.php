@@ -15,13 +15,7 @@ class NewsCreate extends Component
     use WithFileUploads;
     use Actions;
 
-    public $categories;
-    public $category_title;
-    public $title;
-    public $category_id;
-    public $date;
-    public $source;
-    public $url;
+    public $categories, $category_title, $title, $category_id, $date, $source, $url;
     public $thumbnail;
     public $validThumbnail;
     private $filename;
@@ -42,6 +36,13 @@ class NewsCreate extends Component
         $this->date = date('Y-m-d');
         $this->categories = Category::where('type', 'news')->orderBy('title', 'asc')->get();
         return view('livewire.interactivity.news.news-create')->layout('layouts.interactivity');
+    }
+
+    public function updated() {
+        $this->validate([
+            'thumbnail' => 'mimes:mimes:jpeg,png,jpg,webp|max:3072',
+        ]);
+        $this->validThumbnail = $this->thumbnail;
     }
 
     public function saveNews() {
@@ -92,13 +93,6 @@ class NewsCreate extends Component
         } catch (\Throwable $th) {
             dd($th);
         }
-    }
-
-    public function updated() {
-        $this->validate([
-            'thumbnail' => 'mimes:mimes:jpeg,png,jpg,webp|max:3072',
-        ]);
-        $this->validThumbnail = $this->thumbnail;
     }
 
 }
