@@ -5,6 +5,9 @@ namespace App\Http\Livewire\Interactivity\Informative;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 use App\Models\Informative;
 
 class InformativeCreate extends Component
@@ -12,56 +15,90 @@ class InformativeCreate extends Component
     use Actions;
     use WithFileUploads;
     
-    public $title, $expires_at, $video;
-    public $validVideo;
+    public $categories, $category_title, $category_id, $title, $type, $url, $active, $expires_at;
+    public $media;
+    public $validMedia;
+    public $filename;
     public $path;
 
     protected $validationAttributes = [
-        'title' => 'Título',
+        'category_title',
+        'title' => 'Título do informativo',
+        'category_id' => 'Categoria',
+        'type' => 'Tipo de mídia',
+        'url' => 'URL',
+        'active' => 'Ativo',
         'expires_at' => 'Expiração',
     ];
-
-    public function updated() {
-        $this->validate([
-            'video' => 'mimetypes:video/avi,video/mpeg,video/mp4|max:10240',
-        ]);
-        $this->validVideo = $this->video;
+    
+    public function render()
+    {
+        $this->categories = Category::where('type', 'informative')->orderBy('title', 'asc')->get();
+        return view('livewire.interactivity.informative.create')->layout('layouts.interactivity');
     }
 
-    public function save() {
-        $validated = $this->validate([
-            'title' => 'required|string|min:5|max:100',
-            'expires_at' => 'required|date|after:now',
-            'video' => 'mimetypes:video/avi,video/mpeg,video/mp4|max:10240',
+    public function updatedMedia() {
+        $this->validate([
+            'type' => 'required',
+            'media' => $this->type === 'IMAGE' ? 'mimes:jpeg,png,jpg,jpeg,webp|max:3072' : 'mimetypes:video/avi,video/mpeg,video/mp4|max:10240',
         ]);
-        $this->path = $this->video->store('videos');
+        $this->validMedia = $this->media;
+    }
+
+    public function saveInformative() {
+        $validatedInformative = $this->validate([
+            'title' => 'required|string|min:5|max:100',
+            'category_id' => 'required|integer|min:1',
+            'type' => 'required|in:VIDEO,IMAGE,TEXT',
+            'url' => 'nullable|url',
+            'active' => 'required|boolean',
+            'expires_at' => 'required|date|after:now',
+            'media' => $this->type === 'IMAGE' ? 'mimes:jpeg,png,jpg,jpeg,webp|max:3072' : 'mimetypes:video/avi,video/mpeg,video/mp4|max:10240',
+        ]);
+
         try {
-            $informative = Informative::create([
-                'title' => $this->title,
-                'active' => 1,
-                'expires_at' => $this->expires_at
-            ]);
-            $informative->video()->create([
-                'path' => $this->path,
-            ]);
-            $this->dialog([
-                'title'       => 'Sucesso!',
-                'description' => 'Informativo salvo com sucesso!',
-                'icon'        => 'success'
-            ]);
-            $this->reset('title','expires_at','video','validVideo','path');
+            $this->filename = $this->media->store('midias/informative', 's3');
+            $this->path = Storage::disk('s3')->url($this->filename);
         } catch (\Throwable $th) {
-            $this->dialog([
-                'title'       => 'Erro!',
-                'description' => 'Erro ao salvar informativo.',
-                'icon'        => 'error'
-            ]);
+            $this->dialog(['description' => 'Ocorreu um erro ao salvar a mídia.','icon'=>'error']);
+            dd($th);
+        }
+
+        DB::beginTransaction();
+        try {
+            $informative = Informative::create($validatedInformative);
+            if($this->type ==  'image') {
+                $media = $informative->image()->create(['filename' => $this->filename, 'path' => $this->path]);
+            } else {
+                $media = $informative->video()->create(['filename' => $this->filename, 'path' => $this->path]);
+            }
+        } catch (\Throwable $th) {
+            $this->dialog(['description'=>'Ocorreu um erro ao salvar o informativo.','icon'=>'error']);
+        }
+        if(@$informative && @$media) {
+            DB::commit();
+            return redirect()->route('admin.interactivity.informatives.list')->with('success','Informativo salvo com sucesso!');
+        } else {
+            DB::rollBack();
+            Storage::disk('s3')->delete($this->filename);
+            $this->dialog(['description'=>'Ocorreu um erro ao salvar o informativo.','icon'=>'error']);
+            dd($th);
         }
     }
 
-    public function render()
-    {
-        return view('livewire.interactivity.informative.create')->layout('layouts.interactivity');
+    public function saveCategory() {
+        $validatedCategory = $this->validate([
+            'category_title' => 'required|string|min:3|max:64',
+        ]);
+        try {
+            Category::create([
+                'title' => $this->category_title,
+                'type' => 'informative'
+            ]);
+            $this->category_title = '';
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
 }

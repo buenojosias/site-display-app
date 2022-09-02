@@ -1,9 +1,14 @@
 <div>
     <x-slot name="header">Informativos</x-slot>
 
+    @if (session('success'))
+        <x-success message="{{ session('success') }}" />
+    @endif
+
     <div class="list-header">
         <div class="button">
-            <x-button href="{{ route('admin.interactivity.informatives.create') }}" primary label="Criar novo" icon="plus" />
+            <x-button href="{{ route('admin.interactivity.informatives.create') }}" primary label="Criar novo"
+                icon="plus" />
         </div>
         <div class="search">
             <x-input wire:model="search" icon="search" placeholder="Buscar informativo" class="w-full" />
@@ -15,6 +20,7 @@
             <thead>
                 <tr>
                     <th class="left">Título</th>
+                    <th class="left">Categoria</th>
                     <th class="center">Criação</th>
                     <th class="center">Expiração</th>
                     <th class="left">
@@ -34,6 +40,7 @@
                 @forelse ($informatives as $informative)
                     <tr>
                         <td>{{ $informative->title }}</td>
+                        <td>{{ $informative->category->title }}</td>
                         <td class="text-center">{{ $informative->created_at->format('d/m/Y') }}</td>
                         <td class="text-center">{{ $informative->expires_at->format('d/m/Y - H:i') }}</td>
                         <td class="text-left">
@@ -53,9 +60,9 @@
                         </td>
                     </tr>
                 @empty
-                <div class="px-6 py-2">
-                    <p>Nenhum informativo cadastrado.</p>
-                </div>
+                    <tr>
+                        <td colspan="6">Nenhum informativo cadastrado.</td>
+                    </tr>
                 @endforelse
             </tbody>
         </table>

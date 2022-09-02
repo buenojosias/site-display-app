@@ -20,8 +20,8 @@ class Informative extends Model
         return $this->morphOne(Video::class, 'videoable');
     }
     
-    public function images() {
-        return $this->morphMany(Image::class, 'imageable');
+    public function image() {
+        return $this->morphOne(Image::class, 'imageable');
     }
     
 }

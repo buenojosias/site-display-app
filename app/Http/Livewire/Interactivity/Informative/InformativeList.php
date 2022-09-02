@@ -24,6 +24,7 @@ class InformativeList extends Component
         ->when($this->status, function($query){
             return $query->where('active', $this->status);
         })
+        ->with('category')
         ->orderBy('created_at','desc')
         ->paginate(10);
 
