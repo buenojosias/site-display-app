@@ -11,7 +11,12 @@ class NewsController extends Controller
     public function index()
     {
         $today = date('Y-m-d');
-        $news = News::where('date', $today)->with(['category','thumbnail'])->get();
+        $news = News::
+        with(['category','thumbnail'])
+        ->where('date', '>=', $today)
+        ->inRandomOrder()
+        ->first();
+        
         return $news;
     }
 }

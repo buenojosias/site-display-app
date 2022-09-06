@@ -10,13 +10,14 @@ class InformativeController extends Controller
 {
     public function index()
     {
+        $now = date('Y-m-d H:i:s');
         $informatives = Informative::
         with(['category','image','video'])
-        // ativo
-        // data da expiração
+        ->where('active', 1)
         ->where('type', 'IMAGE')
+        ->where('expires_at', '>=', $now)
         ->whereHas('image')
-        ->orWhereHas('video')
+        //->orWhereHas('video')
         ->inRandomOrder()
         ->first();
 
