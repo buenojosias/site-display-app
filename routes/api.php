@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Controllers\Api\{
-    AuthController, AdvertisingController, NewsController
+    AuthController, AdvertisingController, NewsController, QuizController, InformativeController
 };
 
 /*
@@ -28,8 +28,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('advertisings', [AdvertisingController::class, 'index']);
-Route::get('news', [NewsController::class, 'index']);
 
+Route::get('news', [NewsController::class, 'index']);
+Route::get('quizzes/{id}', [QuizController::class,'getTest']);
+Route::get('quizzes', [QuizController::class, 'index']);
+Route::get('informatives', [InformativeController::class, 'index']);
 
 
 

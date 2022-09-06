@@ -67,7 +67,7 @@ class InformativeCreate extends Component
         DB::beginTransaction();
         try {
             $informative = Informative::create($validatedInformative);
-            if($this->type ==  'image') {
+            if($this->type === 'IMAGE') {
                 $media = $informative->image()->create(['filename' => $this->filename, 'path' => $this->path]);
             } else {
                 $media = $informative->video()->create(['filename' => $this->filename, 'path' => $this->path]);
