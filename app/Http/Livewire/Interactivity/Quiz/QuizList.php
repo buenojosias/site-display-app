@@ -4,10 +4,14 @@ namespace App\Http\Livewire\Interactivity\Quiz;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
+use WireUi\Traits\Actions;
 use App\Models\Quiz;
 
 class QuizList extends Component
 {
+    use Actions;
+
     public $search = null;
     public $type = null;
     public $status = null;
@@ -38,4 +42,26 @@ class QuizList extends Component
 
         return view('livewire.interactivity.quiz.list', ['quizzes' => $quizzes])->layout('layouts.interactivity');
     }
+
+    public function deleteOne($id) {
+        $quiz = Quiz::with(['thumbnail','alternatives'])->findOrFail($id);
+        if($quiz->thumbnail) {
+            try {
+                Storage::disk('s3')->delete($quiz->thumbnail->filename);
+                $quiz->thumbnail->delete();
+            } catch (\Throwable $th) {
+                $this->dialog(['description'=>'Ocorreu um erro ao excluir a imagem.','icon'=>'error']);
+                dd($th);
+            }
+        }
+
+        try {
+            $quiz->delete();
+            $this->dialog(['description'=>'Pergunta excluída com sucesso.','icon'=>'success']);
+        } catch (\Throwable $th) {
+            $this->dialog(['description'=>'Ocorreu um erro ao excluir a pergunta.','icon'=>'error']);
+            dd($th);
+        }
+    }
+
 }

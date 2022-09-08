@@ -56,6 +56,7 @@
                             <div class="flex item-center justify-center">
                                 {{-- <x-button href="{{ route('admin.informatives.show', $informative) }}" flat rounded icon="eye" class="px-1 py-1" /> --}}
                                 <x-button flat rounded icon="pencil" class="px-1 py-1" />
+                                <x-button wire:click="deleteOne({{ $informative->id }})" flat negative sm icon="trash" />
                             </div>
                         </td>
                     </tr>
