@@ -26,7 +26,7 @@ class InformativeList extends Component
         })
         ->with('category')
         ->orderBy('created_at','desc')
-        ->paginate(10);
+        ->paginate();
 
         return view('livewire.interactivity.informative.list', ['informatives' => $informatives])->layout('layouts.interactivity');
     }
