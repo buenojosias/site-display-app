@@ -9,7 +9,7 @@ class Quiz extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category_id','question','type,','registrable','active'];
+    protected $fillable = ['category_id','question','type','registrable','active'];
 
     public function category() {
         return $this->belongsTo(Category::class);

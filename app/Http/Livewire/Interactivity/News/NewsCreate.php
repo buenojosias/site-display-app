@@ -46,6 +46,8 @@ class NewsCreate extends Component
     }
 
    public function saveNews() {
+        $this->date = \Carbon\Carbon::parse($this->date)->format('Y-m-d');
+
         $validatedNews = $this->validate([
             'title' => 'required|string|min:10|max:255',
             'category_id' => 'required|integer|min:1',
@@ -69,6 +71,7 @@ class NewsCreate extends Component
             $image = $news->thumbnail()->create(['filename' => $this->filename, 'path' => $this->path]);
         } catch (\Throwable $th) {
             $this->dialog(['description'=>'Ocorreu um erro ao salvar a notícia.','icon'=>'error']);
+            dd($th);
         }
         if(@$news && @$image) {
             DB::commit();
@@ -77,6 +80,7 @@ class NewsCreate extends Component
             DB::rollBack();
             Storage::disk('s3')->delete($this->filename);
             $this->dialog(['description'=>'Ocorreu um erro ao salvar a notícia.','icon'=>'error']);
+            dd($th);
         }
     }
 

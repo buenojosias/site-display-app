@@ -15,7 +15,7 @@ class QuizCreate extends Component
     use WithFileUploads;
     use Actions;
 
-    public $categories, $category_title, $category_id, $question, $type, $registrable = false, $active = false;
+    public $categories, $category_title, $category_id, $question, $type, $registrable = false, $active = true;
     public $alternatives = [];
     public $thumbnail;
     public $validThumbnail;
@@ -57,10 +57,11 @@ class QuizCreate extends Component
             'question' => 'required|string|min:10|max:255',
             'category_id' => 'required|integer|min:1',
             'type' => 'required|in:TEST,SURVEY',
-            'registrable' => 'required|boolean',
-            'active' => 'required|boolean',
+            'registrable' => 'nullable|boolean',
+            'active' => 'nullable|boolean',
             'thumbnail' => 'nullable|mimes:jpeg,png,jpg,webp|max:3072',
         ]);
+
         $validateAlternatives = $this->validate([
             'alternatives.*.answer' => 'required|string|min:3|max:100',
             'alternatives.*.correct' => 'required|boolean',
