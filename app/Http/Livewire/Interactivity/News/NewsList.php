@@ -10,13 +10,14 @@ use App\Models\News;
 
 class NewsList extends Component
 {
+    use WithPagination;
     use Actions;
 
     public $news;
 
     public function render()
     {
-        $this->news = News::with(['category','thumbnail'])->get();//where('date', Date('Ymd'))->
+        $this->news = News::with(['category','thumbnail'])->orderBy('date', 'asc')->get();//where('date', Date('Ymd'))->
         return view('livewire.interactivity.news.news-list')->layout('layouts.interactivity');
     }
 

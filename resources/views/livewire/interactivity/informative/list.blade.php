@@ -55,14 +55,14 @@
                         <td class="text-center">
                             <div class="flex item-center justify-center">
                                 {{-- <x-button href="{{ route('admin.informatives.show', $informative) }}" flat rounded icon="eye" class="px-1 py-1" /> --}}
-                                <x-button flat rounded icon="pencil" class="px-1 py-1" />
+                                <x-button href="{{ route('admin.interactivity.informatives.edit', $informative) }}" flat rounded sm icon="pencil" class="px-1 py-2.5" />
                                 <x-button wire:click="deleteOne({{ $informative->id }})" flat negative sm icon="trash" />
                             </div>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6">Nenhum informativo cadastrado.</td>
+                        <td colspan="6">Nenhum informativo encontrado.</td>
                     </tr>
                 @endforelse
             </tbody>

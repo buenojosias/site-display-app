@@ -32,8 +32,9 @@
                             <td>{{ $news->category->title }}</td>
                             <td>{{ $news->date }}</td>
                             <td>{{ $news->source }}</td>
-                            <td>
-                                <x-button wire:click="deleteOne({{ $news->id }})" flat negative sm icon="trash" />
+                            <td class="flex item-center justify-center">
+                                <x-button href="{{ route('admin.interactivity.news.edit', $news) }}" flat rounded sm icon="pencil" class="px-1 py-2.5" />
+                                <x-button wire:click="deleteOne({{ $news->id }})" flat rounded sm negative icon="trash" class="px-1 py-2.5" />
                             </td>
                         </tr>
                     @endforeach

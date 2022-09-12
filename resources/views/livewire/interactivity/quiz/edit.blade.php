@@ -1,13 +1,13 @@
 <div>
-    <x-slot name="title">Nova notícia</x-slot>
+    <x-slot name="title">Editar quiz</x-slot>
 
     <div class="grid grid-cols-3 gap-6">
         <div class="col-span-2 p-4 bg-white rounded shadow">
             <x-errors class="mb-4" />
-            <form wire:submit.prevent="saveNews">
+            <form wire:submit.prevent="saveQuiz">
                 <div class="grid grid-cols-2 gap-4">
                     <div class="col-span-2">
-                        <x-input label="Título" placeholder="Título da notícia" wire:model.defer="title" />
+                        <x-input wire:model.defer="question" label="Pergunta" />
                     </div>
                     <div>
                         <x-native-select label="Categoria" wire:model.defer="category_id">
@@ -18,19 +18,21 @@
                         </x-native-select>
                     </div>
                     <div>
-                        <x-datetime-picker label="Data" placeholder="Data" wire:model.defer="date" :min="now()"
-                            :max="now()->addDays(4)" :clearable="false" without-time without-tips />
+                        <x-native-select wire:model="type" label="Tipo de pergunta">
+                            <option value="">Selecione</option>
+                            <option value="TEST">Teste</option>
+                            <option value="SURVEY">Enquete</option>
+                        </x-native-select>
+                    </div>
+                    <div>
+                        <x-toggle md label="Registrável" wire:model.defer="registrable" />
+                    </div>
+                    <div>
+                        <x-toggle md label="Ativo" wire:model.defer="active" />
                     </div>
                 </div>
-                <div class="grid grid-cols-4 gap-4 mt-4">
-                    <div>
-                        <x-input label="Fonte" placeholder="Fonte da notícia" wire:model.defer="source" />
-                    </div>
-                    <div class="col-span-3">
-                        <x-input label="URL" placeholder="Site para matéria" wire:model.defer="url" />
-                    </div>
 
-                    <div class="col-span-4">
+                {{-- <div>
                         @if (!$validThumbnail)
                             <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
                                 x-on:livewire-upload-finish="isUploading = false"
@@ -50,7 +52,8 @@
                                             <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                                                 <span class="font-semibold">Clique para selecionar o arquivo</span>
                                             </p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">JPEG, PNG ou WEBP (máx. 3mb)
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">JPEG, PNG ou WEBP (máx.
+                                                3mb)
                                             </p>
                                         </div>
                                         <input id="thumbnail" type="file" wire:model.defer="thumbnail"
@@ -66,16 +69,64 @@
                         @if ($validThumbnail)
                             <img src="{{ $validThumbnail->temporaryUrl() }}">
                         @endif
-                    </div>
-                </div>
+                    </div> --}}
+
+
                 <div class="mt-6 sb-footer">
-                    <a class="text-sm mt-2 text-gray-600 hover:text-gray-900" href="#">Cancelar</a>
+                    <a href="{{ URL::previous() }}" class="text-sm mt-2 text-gray-600 hover:text-gray-900"
+                        href="#">Cancelar</a>
                     <x-button type="submit" primary label="Salvar" />
                 </div>
             </form>
         </div>
 
-        <div class="bg-white rounded shadow">
+        <div class="col-span-2 p-4 bg-white rounded shadow">
+            <h5 class="mb-4 font-semibold">Alternativas</h5>
+            @if ($alternative)
+                <div class="mt-4">
+                    <x-input wire:model.defer="alternative.answer" class="mb-2" label="{{ $alternative['id'] ? 'Alterar' : 'Adicionar' }} alternativa"
+                        placeholder="Resposta">
+                        <x-slot name="append">
+                            <div class="absolute inset-y-0 right-0 flex items-center p-0.5">
+                                @if ($type === 'TEST')
+                                    <x-checkbox md wire:model.defer="alternative.correct" class="mr-2" />
+                                @endif
+                                @if ($alternative['id'])
+                                    <x-button wire:click="updateAlternative()" class="h-full rounded-md px-2"
+                                        icon="check" primary flat squared />
+                                @else
+                                    <x-button wire:click="storeAlternative" class="h-full rounded-l-md px-2"
+                                        icon="check" primary flat squared />
+                                @endif
+                                <x-button wire:click="clearAlternative" class="h-full rounded-r-md px-2" icon="x"
+                                    negative flat squared />
+                            </div>
+                        </x-slot>
+                    </x-input>
+                </div>
+            @endif
+            <table class="w-full mb-4">
+                @foreach ($alternatives as $key => $alt)
+                    <tr class="border-b py-1">
+                        <td>{{ $alt->answer }}</td>
+                        <td>
+                            @if ($alt->correct)
+                            <x-icon name="check" class="w-5 h-5" />
+                            @endif
+                        </td>
+                        <td class="w-20">
+                            <x-button wire:click="editAlternative({{ $alt }})" class="h-full rounded-md px-2"
+                                icon="pencil" primary flat squared />
+                            <x-button wire:click="removeAlternative({{ $alt->id }})" class="h-full rounded-md px-2"
+                                icon="trash" negative flat squared />
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+            <x-button sm secondary wire:click="addAlternative" label="Adicionar" />
+        </div>
+
+        {{-- <div class="bg-white rounded shadow">
             <h3 class="p-2 mb-2 border-b-1 border-gray-200 font-bold">Categorias</h3>
             <ul>
                 @foreach ($categories as $category)
@@ -93,6 +144,6 @@
                     </x-slot>
                 </x-input>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>

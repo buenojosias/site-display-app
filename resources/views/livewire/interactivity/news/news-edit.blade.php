@@ -1,5 +1,5 @@
 <div>
-    <x-slot name="title">Nova notícia</x-slot>
+    <x-slot name="title">Editar notícia</x-slot>
 
     <div class="grid grid-cols-3 gap-6">
         <div class="col-span-2 p-4 bg-white rounded shadow">
@@ -30,7 +30,7 @@
                         <x-input label="URL" placeholder="Site para matéria" wire:model.defer="url" />
                     </div>
 
-                    <div class="col-span-4">
+                    {{-- <div class="col-span-4">
                         @if (!$validThumbnail)
                             <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
                                 x-on:livewire-upload-finish="isUploading = false"
@@ -66,16 +66,16 @@
                         @if ($validThumbnail)
                             <img src="{{ $validThumbnail->temporaryUrl() }}">
                         @endif
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="mt-6 sb-footer">
-                    <a class="text-sm mt-2 text-gray-600 hover:text-gray-900" href="#">Cancelar</a>
+                    <a href="{{ URL::previous() }}" class="text-sm mt-2 text-gray-600 hover:text-gray-900" href="#">Cancelar</a>
                     <x-button type="submit" primary label="Salvar" />
                 </div>
             </form>
         </div>
 
-        <div class="bg-white rounded shadow">
+        {{-- <div class="bg-white rounded shadow">
             <h3 class="p-2 mb-2 border-b-1 border-gray-200 font-bold">Categorias</h3>
             <ul>
                 @foreach ($categories as $category)
@@ -93,6 +93,6 @@
                     </x-slot>
                 </x-input>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>

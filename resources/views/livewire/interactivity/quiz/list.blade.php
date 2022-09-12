@@ -62,15 +62,14 @@
                             </td>
                             <td class="text-center">
                                 <div class="flex item-center justify-center">
-                                    {{-- <x-button href="{{ route('admin.quizzes.show', $quiz) }}" flat rounded icon="eye" class="px-1 py-1" /> --}}
-                                    <x-button flat rounded icon="pencil" class="px-1 py-1" />
-                                    <x-button wire:click="deleteOne({{ $quiz->id }})" flat negative sm icon="trash" />
-                                    </div>
+                                    <x-button href="{{ route('admin.interactivity.quizzes.edit', $quiz) }}" flat rounded sm icon="pencil" class="px-1 py-2.5" />
+                                    <x-button wire:click="deleteOne({{ $quiz->id }})" flat rounded negative sm icon="trash" />
+                                </div>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6">Nenhum informativo cadastrado.</td>
+                            <td colspan="6">Nenhum quiz encontrado.</td>
                         </tr>
                     @endforelse
                 </tbody>

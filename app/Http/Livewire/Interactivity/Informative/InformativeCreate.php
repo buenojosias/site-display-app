@@ -22,7 +22,7 @@ class InformativeCreate extends Component
     public $path;
 
     protected $validationAttributes = [
-        'category_title',
+        'category_title' => 'Título da categoria',
         'title' => 'Título do informativo',
         'category_id' => 'Categoria',
         'type' => 'Tipo de mídia',

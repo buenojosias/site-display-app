@@ -11,9 +11,9 @@ use App\Http\Livewire\Admin\Advertising\{ AdvertisingList, AdvertisingCreate };
 use App\Http\Livewire\Admin\Balance\{ BalanceShow };
 
 use App\Http\Livewire\Interactivity\InteractivityHome;
-use App\Http\Livewire\Interactivity\Informative\{ InformativeList, InformativeCreate };
-use App\Http\Livewire\Interactivity\News\{ NewsList, NewsCreate };
-use App\Http\Livewire\Interactivity\Quiz\{ QuizList, QuizCreate };
+use App\Http\Livewire\Interactivity\Informative\{ InformativeList, InformativeCreate, InformativeEdit };
+use App\Http\Livewire\Interactivity\News\{ NewsList, NewsCreate, NewsEdit };
+use App\Http\Livewire\Interactivity\Quiz\{ QuizList, QuizCreate, QuizEdit };
 
 use App\Http\Controllers\Admin\{ CompanyController, DriverController, AdvertisingController, RecordController };
 
@@ -45,8 +45,11 @@ Route::prefix('interatividade')->name('admin.interactivity.')->group(function() 
     Route::get('/', InteractivityHome::class)->name('home');
     Route::get('/noticias', NewsList::class)->name('news.list');
     Route::get('/noticias/nova', NewsCreate::class)->name('news.create');
+    Route::get('/noticias/{news}/editar', NewsEdit::class)->name('news.edit');
     Route::get('/informativos', InformativeList::class)->name('informatives.list');
     Route::get('/informativos/novo', InformativeCreate::class)->name('informatives.create');
+    Route::get('/informativos/{informative}/eidtar', InformativeEdit::class)->name('informatives.edit');
     Route::get('/quiz', QuizList::class)->name('quizzes.list');
     Route::get('/quiz/novo', QuizCreate::class)->name('quizzes.create');
+    Route::get('/quiz/{quiz}/editar', QuizEdit::class)->name('quizzes.edit');
 });
