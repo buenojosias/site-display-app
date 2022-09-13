@@ -30,9 +30,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('advertisings', [AdvertisingController::class, 'index']);
 
 Route::get('news', [NewsController::class, 'index']);
-Route::get('quizzes/{id}', [QuizController::class,'getTest']);
+Route::get('quizzes/{id}', [QuizController::class, 'getTest']);
 Route::get('quizzes', [QuizController::class, 'index']);
 Route::get('informatives', [InformativeController::class, 'index']);
+
+Route::post('quizzes/report', [QuizController::class, 'registerRecord']);
 
 
 

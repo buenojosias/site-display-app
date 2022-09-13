@@ -19,7 +19,7 @@ class InformativeController extends Controller
         ->whereHas('image')
         //->orWhereHas('video')
         ->inRandomOrder()
-        ->first();
+        ->get();
 
         return $informatives;
     }

@@ -13,6 +13,7 @@ class DriverCreate extends Component
 
     public $name, $cpf;
     public $region = 'CWB';
+    public $default_reward = 30;
 
     protected $validationAttributes = [
         'name' => 'Nome',
@@ -24,15 +25,15 @@ class DriverCreate extends Component
             'name' => 'required|string|min:3|max:180',
             'cpf' => 'required|string|size:11|unique:drivers',
             'region' => 'required|string|size:3',
+            'default_reward' => 'required|numeric|max:100'
         ]);
         DB::beginTransaction();
         try {
             $driver = Driver::create($validatedDriver);
             $balance = $driver->balance()->create();
         } catch (\Throwable $th) {
-            $this->dialog([
-                'title' => 'Ops!','description'=>'Ocorreu um erro ao cadastrar motorista.','icon'=>'error'
-            ]);
+            $this->dialog([ 'title' => 'Ops!','description'=>'Ocorreu um erro ao cadastrar motorista.','icon'=>'error' ]);
+            dd($th);
         }
         if($driver && $balance) {
             DB::commit();

@@ -9,7 +9,7 @@ class Driver extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','cpf','region','active','working'];
+    protected $fillable = ['name','cpf','default_reward','region','active','working'];
 
     public function user() {
         return $this->belongsTo(User::class);

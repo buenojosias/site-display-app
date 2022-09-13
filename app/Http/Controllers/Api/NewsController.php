@@ -15,7 +15,7 @@ class NewsController extends Controller
         with(['category','thumbnail'])
         ->where('date', '>=', $today)
         ->inRandomOrder()
-        ->first();
+        ->get();
         
         return $news;
     }
