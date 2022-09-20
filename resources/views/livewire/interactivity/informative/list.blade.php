@@ -21,6 +21,7 @@
                 <tr>
                     <th class="left">Título</th>
                     <th class="left">Categoria</th>
+                    <th><x-icon name="eye" class="w-4 h-4" /></th>
                     <th class="center">Criação</th>
                     <th class="center">Expiração</th>
                     <th class="left">
@@ -41,6 +42,7 @@
                     <tr>
                         <td>{{ $informative->title }}</td>
                         <td>{{ $informative->category->title }}</td>
+                        <td class="text-center">{{ $informative->accesses_count }}</td>
                         <td class="text-center">{{ $informative->created_at->format('d/m/Y') }}</td>
                         <td class="text-center">{{ $informative->expires_at->format('d/m/Y - H:i') }}</td>
                         <td class="text-left">

@@ -32,6 +32,7 @@
                                 </x-dropdown>
                             </div>
                         </th>
+                        <th><x-icon name="cursor-click" class="w-4 h-4" /></th>
                         <th class="left">
                             <div class="flex items-center space-x-2">
                                 <span>Status</span>
@@ -51,6 +52,7 @@
                             <td>{{ $quiz->question }}</td>
                             <td>{{ $quiz->category->title }}</td>
                             <td>{{ $quiz->type }}</td>
+                            <td class="text-center">{{ $quiz->records_count }}</td>
                             <td class="text-left">
                                 <span @class([
                                     'py-0.5 px-2 rounded-full text-xs',

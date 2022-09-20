@@ -37,6 +37,7 @@ class QuizList extends Component
             return $query->where('active', $this->status);
         })
         ->with('category')
+        ->withCount('records')
         ->orderBy('created_at','desc')
         ->paginate();
 

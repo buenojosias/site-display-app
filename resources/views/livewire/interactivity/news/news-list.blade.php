@@ -19,6 +19,7 @@
                         <th>Categoria</th>
                         <th>Data</th>
                         <th>Fonte</th>
+                        <th><x-icon name="eye" class="w-4 h-4" /></th>
                         <th class="w-1"></th>
                     </tr>
                 </thead>
@@ -32,6 +33,7 @@
                             <td>{{ $news->category->title }}</td>
                             <td>{{ $news->date }}</td>
                             <td>{{ $news->source }}</td>
+                            <td class="text-center">{{ $news->accesses_count }}</td>
                             <td class="flex item-center justify-center">
                                 <x-button href="{{ route('admin.interactivity.news.edit', $news) }}" flat rounded sm icon="pencil" class="px-1 py-2.5" />
                                 <x-button wire:click="deleteOne({{ $news->id }})" flat rounded sm negative icon="trash" class="px-1 py-2.5" />

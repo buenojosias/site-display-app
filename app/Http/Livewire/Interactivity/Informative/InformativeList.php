@@ -29,6 +29,7 @@ class InformativeList extends Component
             return $query->where('active', $this->status);
         })
         ->with('category')
+        ->withCount('accesses')
         ->orderBy('created_at','desc')
         ->paginate();
 
@@ -59,6 +60,7 @@ class InformativeList extends Component
             if ($informative->image) {
             } else if ($informative->video) {
             }
+            $informative->accesses()->delete();
             $informative->delete();
             $this->dialog(['description'=>'Informativo excluído com sucesso.','icon'=>'success']);
         } catch (\Throwable $th) {
