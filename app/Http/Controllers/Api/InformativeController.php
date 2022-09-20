@@ -21,6 +21,10 @@ class InformativeController extends Controller
         ->inRandomOrder()
         ->get();
 
+        foreach($informatives as $informative) {
+            $informative['url'] = env('APP_URL').'/app/redir?model=informative&id='.$informative['id'];
+        }
+
         return $informatives;
     }
 }

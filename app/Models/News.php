@@ -18,4 +18,8 @@ class News extends Model
     public function thumbnail() {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function accesses() {
+        return $this->morphMany(InteractivityAccess::class, 'accessable');
+    }
 }

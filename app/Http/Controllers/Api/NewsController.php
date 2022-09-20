@@ -17,6 +17,10 @@ class NewsController extends Controller
         ->inRandomOrder()
         ->get();
         
+        foreach($news as $n) {
+            $n['url'] = env('APP_URL').'/app/redir?model=news&id='.$n['id'];
+        }
+        
         return $news;
     }
 }

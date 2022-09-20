@@ -23,5 +23,9 @@ class Informative extends Model
     public function image() {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function accesses() {
+        return $this->morphMany(InteractivityAccess::class, 'accessable');
+    }
     
 }
