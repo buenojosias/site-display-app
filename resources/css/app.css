@@ -22,7 +22,7 @@
 }
 
 .table-wrapper {
-    @apply bg-white overflow-x-auto shadow-sm rounded;
+    @apply bg-white max-w-full overflow-x-auto shadow-sm rounded;
 }
 .table {
     @apply min-w-max w-full table-auto;
@@ -31,7 +31,7 @@
     @apply bg-gray-200 text-gray-600 uppercase text-sm leading-normal;
 }
 .table th {
-    @apply py-1.5 px-6;
+    @apply py-1.5 px-4;
 }
 .table th.center {
     @apply text-center;
@@ -46,7 +46,7 @@
     @apply border-b border-gray-200 hover:bg-gray-50;
 }
 .table td {
-    @apply py-1.5 px-6;
+    @apply py-1.5 px-4;
 }
 .table td[colspan] {
     @apply text-center py-8 font-semibold;

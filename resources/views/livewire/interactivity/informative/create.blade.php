@@ -1,7 +1,7 @@
 <div>
     <x-slot name="title">Criar informativo</x-slot>
 
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid sm:grid-cols-3 gap-6">
         <div class="col-span-2 p-4 bg-white rounded shadow">
             <x-errors class="m-4" />
             <form wire:submit.prevent="saveInformative">
