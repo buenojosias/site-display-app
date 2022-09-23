@@ -13,7 +13,7 @@ use App\Http\Livewire\Admin\Balance\{ BalanceShow };
 use App\Http\Livewire\Interactivity\InteractivityHome;
 use App\Http\Livewire\Interactivity\Informative\{ InformativeList, InformativeCreate, InformativeEdit };
 use App\Http\Livewire\Interactivity\News\{ NewsList, NewsCreate, NewsEdit };
-use App\Http\Livewire\Interactivity\Quiz\{ QuizList, QuizCreate, QuizEdit };
+use App\Http\Livewire\Interactivity\Quiz\{ QuizList, QuizCreate, QuizEdit, QuizRecords };
 
 use App\Http\Controllers\Admin\{ CompanyController, DriverController, AdvertisingController, RecordController };
 
@@ -52,4 +52,5 @@ Route::prefix('interatividade')->name('admin.interactivity.')->group(function() 
     Route::get('/quiz', QuizList::class)->name('quizzes.list');
     Route::get('/quiz/novo', QuizCreate::class)->name('quizzes.create');
     Route::get('/quiz/{quiz}/editar', QuizEdit::class)->name('quizzes.edit');
+    Route::get('/quiz/relatorio', QuizRecords::class)->name('quizzes.records');
 });

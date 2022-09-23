@@ -15,4 +15,12 @@ class QuizRecord extends Model
         return $this->belongsTo(Quiz::class);
     }
     
+    public function alternativ() {
+        return $this->belongsTo(QuizAlternative::class, 'alternative', 'id');
+    }
+    
+    public function driver() {
+        return $this->belongsTo(Driver::class);
+    }
+    
 }

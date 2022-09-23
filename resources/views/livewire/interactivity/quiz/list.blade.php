@@ -7,8 +7,7 @@
 
     <div class="list-header">
         <div class="button">
-            <x-button href="{{ route('admin.interactivity.quizzes.create') }}" primary label="Criar novo"
-                icon="plus" />
+            <x-button href="{{ route('admin.interactivity.quizzes.create') }}" primary label="Criar novo" icon="plus" />
         </div>
         <div class="search">
             <x-input wire:model="search" icon="search" placeholder="Buscar pergunta" class="w-full" />
@@ -16,6 +15,9 @@
     </div>
 
     <div class="bg-white rounded shadow">
+        <div class="p-2 flex justify-end">
+            <x-button href="{{ route('admin.interactivity.quizzes.records') }}" sm flat info label="Relatório" />
+        </div>
         <div class="table-wrapper">
             <table class="table">
                 <thead>
@@ -32,7 +34,9 @@
                                 </x-dropdown>
                             </div>
                         </th>
-                        <th><x-icon name="cursor-click" class="w-4 h-4" /></th>
+                        <th>
+                            <x-icon name="cursor-click" class="w-4 h-4" />
+                        </th>
                         <th class="left">
                             <div class="flex items-center space-x-2">
                                 <span>Status</span>
@@ -64,8 +68,10 @@
                             </td>
                             <td class="text-center">
                                 <div class="flex item-center justify-center">
-                                    <x-button href="{{ route('admin.interactivity.quizzes.edit', $quiz) }}" flat rounded sm icon="pencil" class="px-1 py-2.5" />
-                                    <x-button wire:click="deleteOne({{ $quiz->id }})" flat rounded negative sm icon="trash" />
+                                    <x-button href="{{ route('admin.interactivity.quizzes.edit', $quiz) }}" flat rounded
+                                        sm icon="pencil" class="px-1 py-2.5" />
+                                    <x-button wire:click="deleteOne({{ $quiz->id }})" flat rounded negative sm
+                                        icon="trash" />
                                 </div>
                             </td>
                         </tr>
