@@ -12,6 +12,7 @@ class AdvertisingController extends Controller
     public function show(Advertising $advertising)
     {
         $company = $advertising->load('company');
+        $video = $advertising->load('video');
         $displays = $advertising->displays()->count();
         $accesses = $advertising->accesses()->count();
         $dailyDisplays = $advertising->displays()->select(DB::raw('DATE(datetime) as date'), DB::raw('count(*) as total'))

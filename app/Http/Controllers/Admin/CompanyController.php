@@ -23,7 +23,7 @@ class CompanyController extends Controller
 
     public function advertisings($id)
     {
-        $company = Company::findOrFail($id);
+        $company = Company::with('logo')->findOrFail($id);
         return view('admin.company.advertisings', compact('company'));
     }
 }

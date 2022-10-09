@@ -9,7 +9,7 @@
         </div>
         <div class="sb-container">
             @if (!$secao)
-                <p>exibir cards de resumo</p>
+                {{-- <p>exibir cards de resumo</p> --}}
             @endif
             @if ($secao === 'empresas')
                 @livewire('admin.record.record-company-list')
