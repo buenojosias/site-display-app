@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     @wireUiScripts
     @livewireStyles
-    <link rel="stylesheet" href="{{ asset('build/assets/app.5cc3557e.css') }}">
-    <script src="{{ asset('build/assets/app.ab93cf8a.js') }}" defer></script>
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app.5cc3557e.css') }}">
+    <script src="{{ asset('build/assets/app.ab93cf8a.js') }}" defer></script> --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         [x-cloak] {
             display: none !important;
@@ -27,6 +27,7 @@
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     {{ $header }}
                 </h2>
+                {{ @$nav }}
             </div>
         </header>
         <main>

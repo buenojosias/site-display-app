@@ -15,11 +15,9 @@ use App\Http\Livewire\Interactivity\Informative\{ InformativeList, InformativeCr
 use App\Http\Livewire\Interactivity\News\{ NewsList, NewsCreate, NewsEdit };
 use App\Http\Livewire\Interactivity\Quiz\{ QuizList, QuizCreate, QuizEdit, QuizRecords };
 
-use App\Http\Controllers\Admin\{ CompanyController, DriverController, AdvertisingController, RecordController };
+use App\Http\Controllers\Admin\{ DashboardController, CompanyController, DriverController, AdvertisingController, RecordController };
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-})->name('admin.index');
+Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
 
 Route::get('/empresas', CompanyList::class)->name('admin.companies.list');
 Route::get('/empresas/cadastro', CompanyCreate::class)->name('admin.companies.create');
