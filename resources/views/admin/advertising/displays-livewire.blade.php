@@ -23,7 +23,7 @@
                     <th class="text-center">Data</th>
                     <th class="text-center">Horário</th>
                     <th class="left">Motorista</th>
-                    <th class="text-center">Valor</th>
+                    <th class="text-center">Custo</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -32,7 +32,7 @@
                     <tr>
                         <td class="text-center">{{ $display->datetime->format('d/m/Y') }}</td>
                         <td class="text-center">{{ $display->datetime->format('H:i:s') }}</td>
-                        <td>{{ $display->driver->name }}</td>
+                        <td>{{ $display->driver->name ?? '' }}</td>
                         <td class="text-center">{{ $display->cost }}</td>
                         <td>...</td>
                     </tr>

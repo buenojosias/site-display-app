@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('advertisings', [AdvertisingController::class, 'index']);
+Route::post('advertisings/displays/register', [AdvertisingController::class, 'registerDisplay']);
 
 Route::get('news', [NewsController::class, 'index']);
 Route::get('quizzes/{id}', [QuizController::class, 'getTest']);
