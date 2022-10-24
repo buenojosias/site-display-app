@@ -19,7 +19,7 @@
 
             <x-input class="mb-4" label="Senha" icon="lock-closed" type="password" name="password" :value="old('email')" required autocomplete="current-password" />
 
-            <x-checkbox label="Manter conectado" id="remember_me" />
+            <x-checkbox label="Manter conectado" id="remember_me" name="remember" />
 
             <div class="flex items-center justify-end">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">Esqueci minha senha</a>

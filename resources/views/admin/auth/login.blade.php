@@ -24,7 +24,7 @@
             </div>
 
             <div class="mt-4">
-                <x-checkbox label="Manter conectado" id="remember_me" />
+                <x-checkbox label="Manter conectado" id="remember_me" name="remember" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

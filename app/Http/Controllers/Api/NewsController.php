@@ -18,7 +18,7 @@ class NewsController extends Controller
         ->get();
         
         foreach($news as $n) {
-            $n['url'] = env('APP_URL').'/app/redir?model=news&id='.$n['id'];
+            $n['url'] = $n['url'] != null ? env('APP_URL').'/app/redir?model=news&id='.$n['id'] : null;
         }
         
         return $news;
