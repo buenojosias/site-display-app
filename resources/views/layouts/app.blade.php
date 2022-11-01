@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     @wireUiScripts
     @livewireStyles
-    <link rel="stylesheet" href="{{ asset('build/assets/app.6f50aa95.css') }}">
-    <script src="{{ asset('build/assets/app.ab93cf8a.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('build/assets/app.a92a1584.css') }}">
+    <script src="{{ asset('build/assets/app.f29c460b.js') }}" defer></script>
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <style>
         [x-cloak] {
